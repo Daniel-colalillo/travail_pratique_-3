@@ -36,6 +36,8 @@ public class Election implements Serializable{
 	
 	List<String> nomsDeputeCollection = new ArrayList<String>();
 	
+	List<Parti> partiCollection = new ArrayList<String>();
+	
 	
 	int[][] index;
 
@@ -92,6 +94,44 @@ public class Election implements Serializable{
 					[deputeCollection.get(i).getNumParti()]
 					= nomsDeputeCollection.indexOf(nomDepute);
 		}
+	}
+	
+	/**
+	 * l’ajoutez à la collection de nomsPartiCollection et retournez la 
+	 * position où il a été ajouté.
+	 * 
+	 * @param le String nom du parti.
+	 * 
+	 * @return position où il a été ajouté ou trouvé avec int index.
+	 * 
+	 * @author Daniel Colalillo
+	 * @since 10/27/2018
+	 * @version 1.0.0
+	 */
+	public int ajouterParti(String parti){
+		
+		/*
+		 * strategie: 
+		 * vérifie si le nom du parti existe en utilisant la méthode 
+		 * .indexOf() puis s'il existe, retourne la position avec un index. 
+		 * toutefois, si elle n’existe pas, utilisez la méthode .add pour 
+		 * remplir la Parti collection.
+		 * 
+		 */
+	
+		//cherche le nom entrée et l'insere dans un index
+		int index = partiCollection.indexOf(parti);
+		
+		//si le nom ne se trouve pas dans la liste, ajoutez-y
+		if(index == -1){
+			
+			partiCollection.add(new String(parti));
+		
+			//définir l'index de la nouvelle parti comme dernière place du tableau
+			index = partiCollection.size() - 1;
+		}
+		
+		return index;
 	}
 	
 	/**
