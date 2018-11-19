@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Array;
+//import java.util.Arrays;
 
 
 public class PartiDeGauche extends Parti
@@ -19,7 +19,7 @@ public class PartiDeGauche extends Parti
 	
 	public void ajouterOBNL(String nomOBNL)
 	{
-		if(this.listOBNL.indexOf(nomOBNL))
+		if(this.listOBNL.indexOf(nomOBNL) == -1)
 		{
 			this.listOBNL.add(nomOBNL);
 		}

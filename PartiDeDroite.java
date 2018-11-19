@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Array;
+//import java.util.Arrays;
 
 
 public class PartiDeDroite extends Parti
@@ -19,7 +19,7 @@ public class PartiDeDroite extends Parti
 	
 	public void ajouterDepute(Depute depute)
 	{
-		if(this.listDepute.indexOf(depute))
+		if(this.listDepute.indexOf(depute) == -1)
 		{
 			this.listDepute.add(depute);
 		}

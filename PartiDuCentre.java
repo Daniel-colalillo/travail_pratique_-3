@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Array;
+//import java.util.Arrays;
 
 
 public class PartiDuCentre extends Parti
@@ -19,7 +19,7 @@ public class PartiDuCentre extends Parti
 	
 	public void ajouterCirconscription(Circonscription circonscription)
 	{
-		if(this.listCirconscription.indexOf(circonscription))
+		if(this.listCirconscription.indexOf(circonscription) == -1)
 		{
 			this.listCirconscription.add(circonscription);
 		}

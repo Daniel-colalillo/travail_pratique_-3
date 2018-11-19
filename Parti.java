@@ -14,12 +14,12 @@ public class Parti
 	
 	public Parti(String parti)
 	{
-		this.Parti = Parti;
+		this.Parti = parti;
 	}
 	
 	public Parti(Parti parti)
 	{
-		this.Parti = parti.getParti;
+		this.Parti = parti.getParti();
 	}
 	
 	public String getParti()
@@ -39,7 +39,7 @@ public class Parti
 	
 	public void cloneParti(Parti parti)
 	{
-		parti.setParti = this.Parti;
+		parti.setParti(this.Parti);
 	}
 	
 	public boolean equals(Parti parti)
