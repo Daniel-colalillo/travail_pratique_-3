@@ -36,11 +36,25 @@ public class Election implements Serializable{
 	
 	List<String> nomsDeputeCollection = new ArrayList<String>();
 	
-	List<Parti> partiCollection = new ArrayList<String>();
+	List<Parti> partiCollection = new ArrayList<Parti>();
 	
 	
 	int[][] index;
 
+	
+public int getNombreDepute(){
+	
+	return deputeCollection.size();
+}
+
+
+public int getNombreCirconscription(){
+	
+	return circonscriptionCollection.size();
+}
+
+
+	
 	/**
 	 * initialise un index
 	 * 
@@ -108,7 +122,7 @@ public class Election implements Serializable{
 	 * @since 10/27/2018
 	 * @version 1.0.0
 	 */
-	public int ajouterParti(String parti){
+	public void ajouterParti(String parti){
 		
 		/*
 		 * strategie: 
@@ -118,21 +132,34 @@ public class Election implements Serializable{
 		 * remplir la Parti collection.
 		 * 
 		 */
-	
-		//cherche le nom entrée et l'insere dans un index
-		int index = partiCollection.indexOf(parti);
 		
 		//si le nom ne se trouve pas dans la liste, ajoutez-y
-		if(index == -1){
-			
-			partiCollection.add(new String(parti));
-		
-			//définir l'index de la nouvelle parti comme dernière place du tableau
-			index = partiCollection.size() - 1;
-		}
-		
-		return index;
+		if(partiCollection.indexOf(parti) == -1) partiCollection.add(new Parti(parti));
+
 	}
+	
+	public Parti[] retourneTableauParti(){
+		Parti [] Parti = new Parti[partiCollection.size()];
+		
+		partiCollection.toArray(Parti);
+		
+		return Parti;
+		
+	}
+	
+	public Depute retourneDepute(int i){
+	
+		return deputeCollection.get(i);
+	}
+	
+	public Circonscription retourneCirconscription(int i){
+		
+		return (i < circonscriptionCollection.size())?circonscriptionCollection.get(i): null;
+	 
+	}
+	
+	
+	
 	
 	/**
 	 * l’ajoutez à la collection de nomsCirconscriptionCollection. Vous 
