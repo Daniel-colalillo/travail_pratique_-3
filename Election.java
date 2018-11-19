@@ -53,6 +53,10 @@ public int getNombreCirconscription(){
 	return circonscriptionCollection.size();
 }
 
+public int getnumeroDePartiCollection(){
+	
+	return partiCollection.size();
+}
 
 	
 	/**
@@ -122,7 +126,7 @@ public int getNombreCirconscription(){
 	 * @since 10/27/2018
 	 * @version 1.0.0
 	 */
-	public void ajouterParti(String parti){
+	public void ajouterParti(Parti parti){
 		
 		/*
 		 * strategie: 
@@ -152,7 +156,7 @@ public int getNombreCirconscription(){
 		return deputeCollection.get(i);
 	}
 	
-	public Circonscription retourneCirconscription(int i){
+	public Circonscription obtenirCirconscription(int i){
 		
 		return (i < circonscriptionCollection.size())?circonscriptionCollection.get(i): null;
 	 

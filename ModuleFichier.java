@@ -260,4 +260,42 @@ public class ModuleFichier {
 		   return election;
 	   }
    
+	   public static void genererSupporteurs(Election election){
+		   
+		   for(int i; i < election.getnumeroDePartiCollection(); i++){
+			   
+			   if(election.partiCollection.get(i) == Constantes.PARTI_DE_GAUCHE){
+				   
+				   genererSupOBNL(election);
+			   }
+			   else if(election.partiCollection.get(i) == Constantes.PARTI_DU_CENTRE){
+				   
+				   generezSupCirconscritpion(election);
+			   }
+			   else generezSupDepute(election);   
+		      
+		   }
+	   }
+	   
+
+	   
+	   public static void genererSupOBNL(Election election){
+		   
+		   election.partiCollection.add(UtilitaireMath.alea(1, Constantes.NB_OBNL_MAX);
+		   
+		   
+	   }
+	   
+	   public static void generezSupCirconscritpion(Election election){
+		   
+		   election.obtenirCirconscription(UtilitaireMath.alea(1, Constantes.NB_CIRCONSCRIPTIONS_MAX);
+		   
+		   for()
+	   }
+	   
+	   public static void generezSupDepute(Election election){
+		
+		   
+	   }
+	   
 }
