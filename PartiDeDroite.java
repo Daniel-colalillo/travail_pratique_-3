@@ -7,8 +7,9 @@ public class PartiDeDroite extends Parti
 {
 	List<Depute> listDepute;
 	
-	public PartiDeDroite()
+	public PartiDeDroite(String parti)
 	{
+		super(parti);
 		this.listDepute = new ArrayList<Depute>();
 	}
 	

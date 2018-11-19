@@ -259,5 +259,41 @@ public class ModuleFichier {
 		   }
 		   return election;
 	   }
-   
+	   
+	   /**
+	    * 
+	    * 
+	    * @param election
+	    * 
+	    * @author Jason Pang
+	    * @since 11/19/2018
+	    * @version 1.0.0
+	    */
+	   public static void genererPartis(Election election)
+	   {
+		   Parti parti;
+		   String[] tabPartis = election.obtenirNomsParti();
+		   for(int i = 0; i < tabPartis.length ;i++)
+		   {
+			   int nombre = UtilitaireMath.alea(1, Constantes.NB_CATERGORIES_PARTI);
+			   
+			   String nomParti = tabPartis[i]; 
+			   
+			   if (nombre == Constantes.PARTI_DE_GAUCHE)
+			   {
+				   parti = new PartiDeGauche(nomParti);
+			   }
+			   else if (nombre == Constantes.PARTI_DU_CENTRE)
+			   {
+				   parti = new PartiDuCentre(nomParti);
+			   }
+			   else
+			   {
+				   parti = new PartiDeDroite(nomParti);
+			   }
+			   
+			   election.ajouterParti(parti);
+		   }
+	   }
+	   
 }

@@ -7,8 +7,9 @@ public class PartiDuCentre extends Parti
 {
 	List<Circonscription> listCirconscription;
 	
-	public PartiDuCentre()
+	public PartiDuCentre(String parti)
 	{
+		super(parti);
 		this.listCirconscription = new ArrayList<Circonscription>();
 	}
 	

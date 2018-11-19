@@ -7,8 +7,9 @@ public class PartiDeGauche extends Parti
 {
 	List<String> listOBNL;
 	
-	public PartiDeGauche()
+	public PartiDeGauche(String parti)
 	{
+		super(parti);
 		this.listOBNL = new ArrayList<String>();
 	}
 	
