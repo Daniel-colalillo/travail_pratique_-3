@@ -288,9 +288,26 @@ public class ModuleFichier {
 	   
 	   public static void generezSupCirconscritpion(Election election){
 		   
-		   election.obtenirCirconscription(UtilitaireMath.alea(1, Constantes.NB_CIRCONSCRIPTIONS_MAX);
+		   String [] array;
 		   
-		   for()
+		   Parti circTemporaire;
+		   
+		   int max = UtilitaireMath.alea(1, Constantes.NB_CIRCONSCRIPTIONS_MAX);
+		   
+		   election.partiCollection.add(circTemporaire);
+		   
+		   for(int i = 0; i < max; i++){
+			   
+			   circTemporaire = election.obtenirCirconscription(UtilitaireMath.alea(0, Constantes.NB_CIRCONSCRIPTIONS_MAX);
+			   
+			   while(election.partiCollection.indexOf(circTemporaire) != Constantes.VIDE){
+				   
+				   circTemporaire = election.obtenirCirconscription(UtilitaireMath.alea(0, Constantes.NB_CIRCONSCRIPTIONS_MAX);
+			   }
+			   
+			   election.partiCollection.add(circTemporaire);
+			   
+		   }
 	   }
 	   
 	   public static void generezSupDepute(Election election){
