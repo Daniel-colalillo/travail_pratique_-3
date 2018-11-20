@@ -1,11 +1,16 @@
-
-
 import java.io.Serializable;
 
+/**
+ * 
+ * 
+ * @author jason
+ * @since 10/23/2018
+ * @version 1.0.1
+ */
 
 public class Depute implements Serializable
 {	
-	private static final long serialVersionUID = 1L;
+	//private static final long serialVersionUID = 1L;
 	
 	private String nomDuDepute;
 	private int numeroDeCase;

@@ -15,14 +15,14 @@ public class PartiDeDroite extends Parti
 	
 	public String getCategorie()
 	{
-		return super.getCategorie() + " de droite ";
+		return super.getCategorie() + " de droite";
 	}
 	
 	public void ajouterDepute(Depute depute)
 	{
-		if(this.listDepute.indexOf(depute) == -1)
+		if(this.listDepute.indexOf(depute) == Constantes.VIDE)
 		{
-			this.listDepute.add(depute);
+			this.listDepute.add(new Depute(depute));
 		}
 	}
 	
