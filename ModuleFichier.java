@@ -262,13 +262,13 @@ public class ModuleFichier {
    
 	   public static void genererSupporteurs(Election election){
 		   
-		   for(int i; i < election.getnumeroDePartiCollection(); i++){
+		   for(int i = 0; i < election.getnumeroDePartiCollection(); i++){
 			   
-			   if(election.partiCollection.get(i) == Constantes.PARTI_DE_GAUCHE){
+			   if(election.partiCollection.get(i).getCategorie() == "Parti de gauche"){
 				   
 				   genererSupOBNL(election);
 			   }
-			   else if(election.partiCollection.get(i) == Constantes.PARTI_DU_CENTRE){
+			   else if(election.partiCollection.get(i).getCategorie() == "Parti du centre"){
 				   
 				   generezSupCirconscritpion(election);
 			   }
@@ -288,22 +288,29 @@ public class ModuleFichier {
 	   
 	   public static void generezSupCirconscritpion(Election election){
 		   
-		   String [] array;
-		   
-		   Parti circTemporaire;
+		   //Circonscription circTemporaire;
 		   
 		   int max = UtilitaireMath.alea(1, Constantes.NB_CIRCONSCRIPTIONS_MAX);
 		   
-		   election.partiCollection.add(circTemporaire);
+		  // if(election.){
+			   
+			   
+		   
+			   //election.partiCollection.add(circTemporaire);
 		   
 		   for(int i = 0; i < max; i++){
 			   
-			   circTemporaire = election.obtenirCirconscription(UtilitaireMath.alea(0, Constantes.NB_CIRCONSCRIPTIONS_MAX);
+			   Circonscription circTemporaire = election.obtenirCirconscription(UtilitaireMath.alea(0, Constantes.NB_CIRCONSCRIPTIONS_MAX);
 			   
-			   while(election.partiCollection.indexOf(circTemporaire) != Constantes.VIDE){
+			   
+			   
+			   while(election.circonscriptionCollection.contains(circTemporaire)){
+				   
+				   
 				   
 				   circTemporaire = election.obtenirCirconscription(UtilitaireMath.alea(0, Constantes.NB_CIRCONSCRIPTIONS_MAX);
 			   }
+			   
 			   
 			   election.partiCollection.add(circTemporaire);
 			   
