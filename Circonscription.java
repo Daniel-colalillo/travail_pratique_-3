@@ -122,5 +122,47 @@ public class Circonscription implements Serializable{
         return numeroCase;
      }
 
+    public void cloneCirconscription(Circonscription circonscription)
+	{
+    	circonscription.nomCirc = this.nomCirc;
+    	circonscription.numero = this.numero;
+    	circonscription.numeroCase = this.numeroCase;
+	}
+	/**
+	 * Convertir les variables d'objet depute en chaine de
+	 * caractere et retourne un chaine de character avec les
+	 * varaibles.
+	 * 
+	 * @return string
+	 * 
+	 * @author Daniel Colalillo
+	 * @since 10/23/2018
+	 * @version 1.0.0
+	 */
+	public String toString()
+	{
+		return this.nomCirc+ " " 
+				+this.numero+ " " 
+				+this.numeroCase;
+	}
+	
+	/**
+	 * Compare un autre objet de type Depute avec ce depute et 
+	 * verifier s'ils sont egal.
+	 * 
+	 * @param depute
+	 * @return vrai ou faux
+	 * 
+	 * @author Jason Pang
+	 * @since 10/23/2018
+	 * @version 1.0.0
+	 */
+	public boolean equals(Circonscription circonscription)
+	{
+		return this.nomCirc.equals(circonscription.nomCirc) && 
+				this.numero == circonscription.numero && 
+				this.numeroCase == circonscription.numeroCase;
+	}
+    
 }
 

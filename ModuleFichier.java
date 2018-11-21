@@ -15,13 +15,13 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.util.Scanner;
 
 /**
- * Module utilitaire qui permet de r√©cup√©rer et de sauvegarder les donn√©es des
- * ma√Ætres, des engagements et des assignations.
+ * Module utilitaire qui permet de r√É¬©cup√É¬©rer et de sauvegarder les donn√É¬©es des
+ * ma√É¬Ætres, des engagements et des assignations.
  *
- * (voir √©nonc√© tp1A18INF111).
+ * (voir √É¬©nonc√É¬© tp1A18INF111).
  *
- * @author Pierre B√©lisle
- * @revisor M√©lanie Lord
+ * @author Pierre B√É¬©lisle
+ * @revisor M√É¬©lanie Lord
  * @version Automne 2018
  */
 public class ModuleFichier {
@@ -92,30 +92,30 @@ public class ModuleFichier {
 	 }
 	 
 	/**
-	    * MÈthode utilitaire privÈe qui permet d'obtenir un fichier sÈlectionnÈ par
+	    * M√©thode utilitaire priv√©e qui permet d'obtenir un fichier s√©lectionn√© par
 	    * l'utilisateur. L'extension ne doit pas contenir le "."
 	    *
-	    * @param description ApparaÓt dans "type de fichier" pour guider
+	    * @param description Appara√Æt dans "type de fichier" pour guider
 	    * l'utilisateur.
 	    *
 	    * @param extension Les 3 lettres en suffixe au point d'un nom de fichier.
 	    *
-	    * @param type : OUVRE ou SAUVE Sert ‡ avoir le bon bouton dans le
+	    * @param type : OUVRE ou SAUVE Sert √† avoir le bon bouton dans le
 	    * JFileChooser, selon le type on a "ouvrir" ou "enregistrer".
 	    *
-	    * @return null si le nom n'est pas valide ou si annulÈ.
+	    * @return null si le nom n'est pas valide ou si annul√©.
 	    */
 	   private static File obtenirFic(String description, String extension, 
 			   int type) {
 
 	      /*
-	       * StratÈgie : On utilise le JFileChooser de javax.swing selon 
-	       * le type (SAUVE ou OPEN) reÁue.
+	       * Strat√©gie : On utilise le JFileChooser de javax.swing selon 
+	       * le type (SAUVE ou OPEN) re√ßue.
 	       * 
 	       * FileNameExtensionFilter permet de filtrer les extensions.
 	       */
 	      
-	      //CrÈation du sÈlectionneur de fichier (rÈpertoire courant).
+	      //Cr√©ation du s√©lectionneur de fichier (r√©pertoire courant).
 	      JFileChooser fc = new JFileChooser(".");
 
 	      File fic = null;
@@ -131,14 +131,14 @@ public class ModuleFichier {
 	      fc.addChoosableFileFilter(filter);
 	      fc.setFileFilter(filter);
 
-	      //On obtient le nom du fichier ‡ ouvrir en lecture ou en Ècriture?
+	      //On obtient le nom du fichier √† ouvrir en lecture ou en √©criture?
 	      if (type == OPEN) {
 	         reponse = fc.showOpenDialog(null);
 	      } else {
 	         reponse = fc.showSaveDialog(null);
 	      }
 
-	      //On obtient le fichier seulement si le fichier a ÈtÈ choisi
+	      //On obtient le fichier seulement si le fichier a √©t√© choisi
 	      if (reponse == JFileChooser.APPROVE_OPTION) {
 	         fic = fc.getSelectedFile();
 	      }
@@ -154,8 +154,8 @@ public class ModuleFichier {
 	   public static void sauverFichierBinaire(Election election) {
 
 	      /*
-	       * StratÈgie : On utilise  un FileOutputStream qui permet d'Ècrire
-	       * les donnÈes de l'election d'un coup.
+	       * Strat√©gie : On utilise  un FileOutputStream qui permet d'√©crire
+	       * les donn√©es de l'election d'un coup.
 	       */
 	      
 	      File fic
@@ -167,11 +167,11 @@ public class ModuleFichier {
 	         ObjectOutputStream tampon = null;
 
 	         try {
-	            //CrÈe le fichier et ouverture du tampon d'Ècriture     
+	            //Cr√©e le fichier et ouverture du tampon d'√©criture     
 	            FileOutputStream tamponFic = new FileOutputStream(fic);
 	            tampon = new ObjectOutputStream(tamponFic);
 
-	            //  …criture et fermeture.
+	            //  √âcriture et fermeture.
 	            tampon.writeObject(election);
 	            tampon.close();
 
@@ -179,15 +179,15 @@ public class ModuleFichier {
 
 	            e1.printStackTrace();
 
-	         // Une erreur de lecture, on dÈtruit le fichier si on a eu
-	         // le temps de le crÈer.
+	         // Une erreur de lecture, on d√©truit le fichier si on a eu
+	         // le temps de le cr√©er.
 	         } catch (IOException e) {
 
-	            // On obtient le chemin du fichier pour le dÈtruire.
+	            // On obtient le chemin du fichier pour le d√©truire.
 	            Path path
 	                    = FileSystems.getDefault().getPath(fic.getName());
 
-	            // Destruction du fichier ouvert (ou crÈÈ) s'il y a un problËme.
+	            // Destruction du fichier ouvert (ou cr√©√©) s'il y a un probl√®me.
 	            try {
 	               tampon.close();
 	               Files.delete(path);
@@ -210,8 +210,8 @@ public class ModuleFichier {
 	   {
 		   
 		   /*
-		    * StratÈgie : On utilise  un FileInputStream qui permet de lire
-		    * les donnÈes de l'election d'un coup.
+		    * Strat√©gie : On utilise  un FileInputStream qui permet de lire
+		    * les donn√©es de l'election d'un coup.
 		    */
 		   
 		   Election election = null;
@@ -225,7 +225,7 @@ public class ModuleFichier {
 		      ObjectInputStream tampon = null;
 
 		      try {
-		         //CrÈe le fichier et ouverture du tampon d'Ècriture     
+		         //Cr√©e le fichier et ouverture du tampon d'√©criture     
 		         FileInputStream tamponFic = new FileInputStream(fic);
 		         tampon = new ObjectInputStream(tamponFic);
 
@@ -237,15 +237,15 @@ public class ModuleFichier {
 
 		         e1.printStackTrace();
 
-		      // Une erreur de lecture, on dÈtruit le fichier si on a eu
-		      // le temps de le crÈer.
+		      // Une erreur de lecture, on d√©truit le fichier si on a eu
+		      // le temps de le cr√©er.
 		      } catch (IOException e) {
 
-		         // On obtient le chemin du fichier pour le dÈtruire.
+		         // On obtient le chemin du fichier pour le d√©truire.
 		         Path path
 		                 = FileSystems.getDefault().getPath(fic.getName());
 
-		         // Destruction du fichier ouvert (ou crÈÈ) s'il y a un problËme.
+		         // Destruction du fichier ouvert (ou cr√©√©) s'il y a un probl√®me.
 		         try {
 		            tampon.close();
 		            Files.delete(path);
@@ -259,6 +259,7 @@ public class ModuleFichier {
 		   }
 		   return election;
 	   }
+
 	   
 	   /**
 	    * 
@@ -294,6 +295,94 @@ public class ModuleFichier {
 			   
 			   election.ajouterParti(parti);
 		   }
+   
+	   public static void genererSupporteurs(Election election){
+		   
+		   for(int i = 0; i < election.getnumeroDePartiCollection(); i++){
+			   
+			   if(election.partiCollection.get(i).getCategorie() == "Parti de gauche"){
+				   
+				   genererSupOBNL(election, i);
+			   }
+			   else if(election.partiCollection.get(i).getCategorie() == "Parti du centre"){
+				   
+				   generezSupCirconscritpion(election, i);
+			   }
+			   else generezSupDepute(election, i);   
+		      
+		   }
+	   }
+	   
+
+	   
+	   public static void genererSupOBNL(Election election, int parti){
+		   
+		   int nombreChaineVide = UtilitaireMath.alea(1, Constantes.NB_OBNL_MAX);
+		   
+		   for(int i = 0; i < nombreChaineVide; i++){
+		   
+		   ((PartiDeGauche) election.partiCollection.get(parti)).ajouterOBNL(null);
+		   
+		   }
+	   }
+	   
+	   
+	   public static void generezSupCirconscritpion(Election election, int parti){
+		   
+		   int max = UtilitaireMath.alea(1, Constantes.NB_CIRCONSCRIPTIONS_MAX);
+			   
+		   Circonscription circTemporaire;
+			   
+			   for(int i ;i < max; i++){
+				   
+				   circTemporaire = election.obtenirCirconscription(UtilitaireMath.alea(0, Constantes.NB_CIRCONSCRIPTIONS_MAX);
+					  
+				   
+				   while(election.circonscriptionCollection.contains(circTemporaire)){
+					   
+					   circTemporaire = election.obtenirCirconscription(UtilitaireMath.alea(0, Constantes.NB_CIRCONSCRIPTIONS_MAX);
+						  
+				   }
+			   
+				   ((PartiDuCentre) election.partiCollection.get(parti)).ajouterCirconscription(circTemporaire);
+			   
+			   }
+	   
+	   }
+	   
+	   
+	   public static void generezSupDepute(Election election, int parti){
+		   
+		   String nomParti = election.nomsPartiCollection.get(parti);
+		   
+		   int nombreDepute = UtilitaireMath.alea(1, Constantes.NB_DEPUTE_MAX);
+		   
+		   Depute depuTemporaire;
+				   
+		   int nombreParti = election.deputeCollection.get(nombreDepute).getNumParti();
+		   
+		   for(int i ;i < nombreDepute; i++){
+			   
+			   depuTemporaire = election.retourneDepute(UtilitaireMath.alea(1, Constantes.NB_DEPUTE_MAX));
+		    
+			   while(!((PartiDeDroite)election.partiCollection.get(nombreParti)).getParti().matches(nomParti)){
+				  
+				   depuTemporaire = election.retourneDepute(UtilitaireMath.alea(1, Constantes.NB_DEPUTE_MAX));
+				    
+				   
+		    		while(election.deputeCollection.contains(depuTemporaire)){
+		    			
+		    			depuTemporaire = election.retourneDepute(UtilitaireMath.alea(1, Constantes.NB_DEPUTE_MAX));  
+		    		
+		    	}
+			   
+		   	}
+			   
+			   ((PartiDeDroite) election.partiCollection.get(parti)).ajouterDepute(depuTemporaire);
+			   
+		   }
+		   
+
 	   }
 	   
 }
