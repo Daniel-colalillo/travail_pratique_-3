@@ -359,9 +359,9 @@ public int getnumeroDePartiCollection(){
 		// Creer un tableau pour les noms des deputes
 		String[] tabNomsDepute = new String[nomsDeputeCollection.size()];
 		// Convertir la liste en tableau 
-		tabNomsDepute = nomsDeputeCollection.toArray(tabNomsDepute);
+		return nomsDeputeCollection.toArray(tabNomsDepute);
 			
-		return tabNomsDepute;		
+		//return tabNomsDepute;		
 	}
 }
 

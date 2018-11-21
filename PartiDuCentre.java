@@ -7,21 +7,22 @@ public class PartiDuCentre extends Parti
 {
 	List<Circonscription> listCirconscription;
 	
-	public PartiDuCentre()
+	public PartiDuCentre(String parti)
 	{
+		super(parti);
 		this.listCirconscription = new ArrayList<Circonscription>();
 	}
 	
 	public String getCategorie()
 	{
-		return super.getCategorie() + " de centre ";
+		return super.getCategorie() + " de centre";
 	}
 	
 	public void ajouterCirconscription(Circonscription circonscription)
 	{
-		if(this.listCirconscription.indexOf(circonscription) == -1)
+		if(this.listCirconscription.indexOf(circonscription) == Constantes.VIDE)
 		{
-			this.listCirconscription.add(circonscription);
+			//this.listCirconscription.add(new Circonscription(circonscription));
 		}
 	}
 	

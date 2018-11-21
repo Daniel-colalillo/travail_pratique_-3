@@ -7,21 +7,22 @@ public class PartiDeGauche extends Parti
 {
 	List<String> listOBNL;
 	
-	public PartiDeGauche()
+	public PartiDeGauche(String parti)
 	{
+		super(parti);
 		this.listOBNL = new ArrayList<String>();
 	}
 	
 	public String getCategorie()
 	{
-		return super.getCategorie() + " de gauche ";
+		return super.getCategorie() + " de gauche";
 	}
 	
 	public void ajouterOBNL(String nomOBNL)
 	{
-		if(this.listOBNL.indexOf(nomOBNL) == -1)
+		if(this.listOBNL.indexOf(nomOBNL) == Constantes.VIDE)
 		{
-			this.listOBNL.add(nomOBNL);
+			this.listOBNL.add(new String(nomOBNL));
 		}
 	}
 	

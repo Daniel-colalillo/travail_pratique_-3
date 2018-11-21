@@ -15,5 +15,10 @@ public class Constantes {
 	
 	//Une case VIDE est une case non utilisee
 	public static final int VIDE = -1;
+	
+	public static final int NB_CATERGORIES_PARTI = 3;
+	public static final int PARTI_DE_GAUCHE = 1;
+	public static final int PARTI_DU_CENTRE = 2;
+	public static final int PARTI_DE_DROITE = 3;
    
 }
