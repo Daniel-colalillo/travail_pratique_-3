@@ -36,9 +36,29 @@ public class Election implements Serializable{
 	
 	List<String> nomsDeputeCollection = new ArrayList<String>();
 	
+	List<Parti> partiCollection = new ArrayList<Parti>();
+	
 	
 	int[][] index;
 
+	
+public int getNombreDepute(){
+	
+	return deputeCollection.size();
+}
+
+
+public int getNombreCirconscription(){
+	
+	return circonscriptionCollection.size();
+}
+
+public int getnumeroDePartiCollection(){
+	
+	return partiCollection.size();
+}
+
+	
 	/**
 	 * initialise un index
 	 * 
@@ -93,6 +113,57 @@ public class Election implements Serializable{
 					= nomsDeputeCollection.indexOf(nomDepute);
 		}
 	}
+	
+	/**
+	 * l’ajoutez à la collection de nomsPartiCollection et retournez la 
+	 * position où il a été ajouté.
+	 * 
+	 * @param le String nom du parti.
+	 * 
+	 * @return position où il a été ajouté ou trouvé avec int index.
+	 * 
+	 * @author Daniel Colalillo
+	 * @since 10/27/2018
+	 * @version 1.0.0
+	 */
+	public void ajouterParti(Parti parti){
+		
+		/*
+		 * strategie: 
+		 * vérifie si le nom du parti existe en utilisant la méthode 
+		 * .indexOf() puis s'il existe, retourne la position avec un index. 
+		 * toutefois, si elle n’existe pas, utilisez la méthode .add pour 
+		 * remplir la Parti collection.
+		 * 
+		 */
+		
+		//si le nom ne se trouve pas dans la liste, ajoutez-y
+		if(partiCollection.indexOf(parti) == -1) partiCollection.add(new Parti(parti));
+
+	}
+	
+	public Parti[] retourneTableauParti(){
+		Parti [] Parti = new Parti[partiCollection.size()];
+		
+		partiCollection.toArray(Parti);
+		
+		return Parti;
+		
+	}
+	
+	public Depute retourneDepute(int i){
+	
+		return deputeCollection.get(i);
+	}
+	
+	public Circonscription obtenirCirconscription(int i){
+		
+		return (i < circonscriptionCollection.size())?circonscriptionCollection.get(i): null;
+	 
+	}
+	
+	
+	
 	
 	/**
 	 * l’ajoutez à la collection de nomsCirconscriptionCollection. Vous 

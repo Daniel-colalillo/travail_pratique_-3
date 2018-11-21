@@ -260,4 +260,92 @@ public class ModuleFichier {
 		   return election;
 	   }
    
+	   public static void genererSupporteurs(Election election){
+		   
+		   for(int i = 0; i < election.getnumeroDePartiCollection(); i++){
+			   
+			   if(election.partiCollection.get(i).getCategorie() == "Parti de gauche"){
+				   
+				   genererSupOBNL(election, i);
+			   }
+			   else if(election.partiCollection.get(i).getCategorie() == "Parti du centre"){
+				   
+				   generezSupCirconscritpion(election, i);
+			   }
+			   else generezSupDepute(election, i);   
+		      
+		   }
+	   }
+	   
+
+	   
+	   public static void genererSupOBNL(Election election, int parti){
+		   
+		   int nombreChaineVide = UtilitaireMath.alea(1, Constantes.NB_OBNL_MAX);
+		   
+		   for(int i = 0; i < nombreChaineVide; i++){
+		   
+		   ((PartiDeGauche) election.partiCollection.get(parti)).ajouterOBNL(null);
+		   
+		   }
+	   }
+	   
+	   
+	   public static void generezSupCirconscritpion(Election election, int parti){
+		   
+		   int max = UtilitaireMath.alea(1, Constantes.NB_CIRCONSCRIPTIONS_MAX);
+			   
+		   Circonscription circTemporaire;
+			   
+			   for(int i ;i < max; i++){
+				   
+				   circTemporaire = election.obtenirCirconscription(UtilitaireMath.alea(0, Constantes.NB_CIRCONSCRIPTIONS_MAX);
+					  
+				   
+				   while(election.circonscriptionCollection.contains(circTemporaire)){
+					   
+					   circTemporaire = election.obtenirCirconscription(UtilitaireMath.alea(0, Constantes.NB_CIRCONSCRIPTIONS_MAX);
+						  
+				   }
+			   
+				   ((PartiDuCentre) election.partiCollection.get(parti)).ajouterCirconscription(circTemporaire);
+			   
+			   }
+	   
+	   }
+	   
+	   
+	   public static void generezSupDepute(Election election, int parti){
+		   
+		   String nomParti = election.nomsPartiCollection.get(parti);
+		   
+		   int nombreDepute = UtilitaireMath.alea(1, Constantes.NB_DEPUTE_MAX);
+		   
+		   Depute depuTemporaire;
+				   
+		   int nombreParti = election.deputeCollection.get(nombreDepute).getNumParti();
+		   
+		   for(int i ;i < nombreDepute; i++){
+			   
+			   depuTemporaire = election.retourneDepute(UtilitaireMath.alea(1, Constantes.NB_DEPUTE_MAX));
+		    
+			   while(!((PartiDeDroite)election.partiCollection.get(nombreParti)).getParti().matches(nomParti)){
+				  
+				   depuTemporaire = election.retourneDepute(UtilitaireMath.alea(1, Constantes.NB_DEPUTE_MAX));
+				    
+				   
+		    		while(election.deputeCollection.contains(depuTemporaire)){
+		    			
+		    			depuTemporaire = election.retourneDepute(UtilitaireMath.alea(1, Constantes.NB_DEPUTE_MAX));  
+		    		
+		    	}
+			   
+		   	}
+			   
+			   ((PartiDeDroite) election.partiCollection.get(parti)).ajouterDepute(depuTemporaire);
+			   
+		   }
+		   
+	   }
+	   
 }
