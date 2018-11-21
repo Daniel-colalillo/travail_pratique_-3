@@ -49,18 +49,19 @@ public class DemarrerElection2018Etud {
 			ModuleFichier.getElection(election);
 			election.genererIndex();
 			ModuleFichier.sauverFichierBinaire(election);
-			//election.genererIndex();
-		}
+		}		
 		/* A éxécuter seulement après que le fichier texte a été  ouvert
 		 * et sauvegarder en binaire.
 		 */
 		else {
 			
 			election = ModuleFichier.getElectionBinaire();
-		}		
+		}
+		
+		ModuleFichier.genererPartis(election);
 		
 		String options = null;
-		
+		while(true){
 		//laisser l'utilisateur choisir une option et la sauvegarder
 		options = (String) JOptionPane.showInputDialog(null, 
                 "Sélectionnez le parametre que vous voulez voir", 
@@ -93,7 +94,8 @@ public class DemarrerElection2018Etud {
 			
 			quitter(election);
 			
-		}				
+		}	
+		}
 	}
 	/**
 	 * affiche le nom et le parti des membres de la conscription choisie.

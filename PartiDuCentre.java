@@ -22,7 +22,7 @@ public class PartiDuCentre extends Parti
 	{
 		if(this.listCirconscription.indexOf(circonscription) == Constantes.VIDE)
 		{
-			this.listCirconscription.add(new Circonscription(circonscription));
+			//this.listCirconscription.add(new Circonscription(circonscription));
 		}
 	}
 	
