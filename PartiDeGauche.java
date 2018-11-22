@@ -13,7 +13,7 @@ public class PartiDeGauche extends Parti
 		this.listOBNL = new ArrayList<String>();
 	}
 	
-	public String getCategorie()
+	public String getCategorieDeGauche()
 	{
 		return super.getCategorie() + " de gauche";
 	}

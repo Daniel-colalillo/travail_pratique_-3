@@ -13,7 +13,7 @@ public class PartiDeDroite extends Parti
 		this.listDepute = new ArrayList<Depute>();
 	}
 	
-	public String getCategorie()
+	public String getCategorieDeDroite()
 	{
 		return super.getCategorie() + " de droite";
 	}

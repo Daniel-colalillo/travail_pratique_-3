@@ -13,7 +13,7 @@ public class PartiDuCentre extends Parti
 		this.listCirconscription = new ArrayList<Circonscription>();
 	}
 	
-	public String getCategorie()
+	public String getCategorieDeCentre()
 	{
 		return super.getCategorie() + " de centre";
 	}

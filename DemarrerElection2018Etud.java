@@ -20,12 +20,6 @@ public class DemarrerElection2018Etud {
 		String[] tabMenuPremierFois = {"Ouvrir fichier texte", 
 				                       "Ouvrir fichier binaire"};
 		
-		String[] tabMenuOptions = 
-			{"Voir tous les députés d’une circonscription",
-				"Voir tous les députés d’un parti",
-				"Voir le parti et la circonscription d’un député",
-				"Quitter"};
-		
 		
 		preparerPourMac();
 		
@@ -60,42 +54,21 @@ public class DemarrerElection2018Etud {
 		
 		ModuleFichier.genererPartis(election);
 		
+		ModuleFichier.genererSupporteurs(election);
+		
 		String options = null;
-		while(true){
-		//laisser l'utilisateur choisir une option et la sauvegarder
-		options = (String) JOptionPane.showInputDialog(null, 
-                "Sélectionnez le parametre que vous voulez voir", 
-                "Type de parametre (députés d’une circonscription,"
-                + " députés d’un parti , "
-                + "parti et la circonscription d’un député, ou quitter?)", 
-                0, null, tabMenuOptions, 0);
 		
-		//Voir tous les députés d’une circonscription
-		if(options.equals(tabMenuOptions[0])) {
+		String [] choix = new String [election.partiCollection.size()];
+		
+		
+	for(int i = 0; i < election.partiCollection.size(); i++){
 			
-			nomCirconscription(election);
+			choix [i] = election.partiCollection.get(i).getParti() + "	" + election.partiCollection.get(i).getCategorie();
 			
 		}
+	
+	JOptionPane.showMessageDialog(null, choix);
 		
-		//Voir tous les députés d’un parti
-		else if(options.equals(tabMenuOptions[1])){
-			
-			nomParti(election);
-			
-		}
-		
-		else if(options.equals(tabMenuOptions[2])){
-			
-			nomsDepute(election);
-			
-		}
-		
-		else if(options.equals(tabMenuOptions[3])){
-			
-			quitter(election);
-			
-		}	
-		}
 	}
 	/**
 	 * affiche le nom et le parti des membres de la conscription choisie.

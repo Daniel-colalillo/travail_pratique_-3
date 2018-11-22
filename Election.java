@@ -36,7 +36,12 @@ public class Election implements Serializable{
 	
 	List<String> nomsDeputeCollection = new ArrayList<String>();
 	
-	List<Parti> partiCollection = new ArrayList<Parti>();
+	List<PartiDeGauche> partiDeGauche = new ArrayList<PartiDeGauche>();
+	
+	List<PartiDuCentre> partiDuCentre = new ArrayList<PartiDuCentre>();
+	
+	List<PartiDeDroite> partiDeDroite = new ArrayList<PartiDeDroite>();
+	
 	
 	
 	int[][] index;
@@ -53,12 +58,21 @@ public int getNombreCirconscription(){
 	return circonscriptionCollection.size();
 }
 
-public int getnumeroDePartiCollection(){
+public int getnumeroDePartiCollectionGauche(){
 	
-	return partiCollection.size();
+	return partiDeGauche.size();
 }
 
+public int getnumeroDePartiCollectionDroite(){
 	
+	return partiDeDroite.size();
+}
+
+public int getnumeroDePartiCollectionCentre(){
+	
+	return partiDuCentre.size();
+}	
+
 	/**
 	 * initialise un index
 	 * 

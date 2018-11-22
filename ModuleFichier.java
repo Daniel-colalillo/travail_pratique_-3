@@ -295,7 +295,8 @@ public class ModuleFichier {
 			   
 			   election.ajouterParti(parti);
 		   }
-   
+	   }
+	   
 	   public static void genererSupporteurs(Election election){
 		   
 		   for(int i = 0; i < election.getnumeroDePartiCollection(); i++){
@@ -333,14 +334,14 @@ public class ModuleFichier {
 			   
 		   Circonscription circTemporaire;
 			   
-			   for(int i ;i < max; i++){
+			   for(int i = 0; i < max; i++){
 				   
-				   circTemporaire = election.obtenirCirconscription(UtilitaireMath.alea(0, Constantes.NB_CIRCONSCRIPTIONS_MAX);
+				   circTemporaire = election.obtenirCirconscription(UtilitaireMath.alea(0, Constantes.NB_CIRCONSCRIPTIONS_MAX));
 					  
 				   
 				   while(election.circonscriptionCollection.contains(circTemporaire)){
 					   
-					   circTemporaire = election.obtenirCirconscription(UtilitaireMath.alea(0, Constantes.NB_CIRCONSCRIPTIONS_MAX);
+					   circTemporaire = election.obtenirCirconscription(UtilitaireMath.alea(0, Constantes.NB_CIRCONSCRIPTIONS_MAX));
 						  
 				   }
 			   
@@ -361,11 +362,17 @@ public class ModuleFichier {
 				   
 		   int nombreParti = election.deputeCollection.get(nombreDepute).getNumParti();
 		   
-		   for(int i ;i < nombreDepute; i++){
+		   for(int i = 0 ;i < nombreDepute; i++){
 			   
 			   depuTemporaire = election.retourneDepute(UtilitaireMath.alea(1, Constantes.NB_DEPUTE_MAX));
+			   
+			   
+			   
+			  // System.out.println(election.partiCollection.get(i).);
+			   
+			   
 		    
-			   while(!((PartiDeDroite)election.partiCollection.get(nombreParti)).getParti().matches(nomParti)){
+			   while(((PartiDeDroite)election.partiCollection.get(nombreParti)).getParti() != nomParti){
 				  
 				   depuTemporaire = election.retourneDepute(UtilitaireMath.alea(1, Constantes.NB_DEPUTE_MAX));
 				    
