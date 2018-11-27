@@ -31,7 +31,14 @@ public class Circonscription implements Serializable{
         nomCirc = nCirc;
         numeroCase = numCase;
     }
-        
+    
+    public Circonscription(Circonscription circonscription){
+    	this.numero = circonscription.getNumero();
+    	this.nomCirc = circonscription.getNomCirconscription();
+    	this.numeroCase = circonscription.getNumeroCase();
+    }
+    
+    
     /**
      * mutatuer pour numero
      * 
