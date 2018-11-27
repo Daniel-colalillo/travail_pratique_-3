@@ -2,6 +2,7 @@
 
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,20 +57,67 @@ public class DemarrerElection2018Etud {
 		
 		ModuleFichier.genererSupporteurs(election);
 		
-		String options = null;
+		//String options = null;
 		
-		String [] choix = new String [election.partiCollection.size()];
+		List<String> choix = new ArrayList<String>();
 		
 		
-	for(int i = 0; i < election.partiCollection.size(); i++){
+		String [] tabChoix = new String [election.partiCollection.size()];
+		//System.out.print(election.partiCollection.size());
+		
+		for(int i = 0; i < election.partiCollection.size(); i++){
 			
-			choix [i] = election.partiCollection.get(i).getParti() + "	" + election.partiCollection.get(i).getCategorie();
-			
+			choix.add(election.partiCollection.get(i).toString());
 		}
-	
-	JOptionPane.showMessageDialog(null, choix);
+		
+		choix.toArray(tabChoix);
+	while(true){
+		 String input = (String) JOptionPane.showInputDialog(null, "choisi parti",
+			        "choisi parti", JOptionPane.QUESTION_MESSAGE, null, 
+			        tabChoix, // Array of choices
+			        tabChoix[0]); // Initial choice
+		
+		 int index = choix.indexOf(input);
+		 
+		
+			 
+		 if(election.partiCollection.get(index).getCategorie().equals("Parti de gauche") ){
+			   
+			 obtenirSup((PartiDeGauche)election.partiCollection.get(index));
+		 }
+		 else if(election.partiCollection.get(index).getCategorie().equals("Parti du centre")){
+			   
+			 obtenirSup((PartiDuCentre)election.partiCollection.get(index));
+		 }
+		 else obtenirSup((PartiDeDroite)election.partiCollection.get(index));
+		 
+		 
+		// JOptionPane.showMessageDialog(null, index, "parti et categorie", 0);
 		
 	}
+	
+	}
+	public static void obtenirSup(PartiDeGauche parti){
+		//test
+		//System.out.printf("TEST1");
+		 JOptionPane.showMessageDialog(null, parti.listOBNL.size(), "nombre de supporteurs OBNL", 0);
+		
+	}
+	
+	public static void obtenirSup(PartiDuCentre parti){
+		
+		//test
+		//System.out.printf("TEST2");
+		 JOptionPane.showMessageDialog(null, parti.obtenirTabCirconscription(), "liste de supporteurs du parti du centre", 0);
+	}
+
+
+	public static void obtenirSup(PartiDeDroite parti){
+		//test
+		//System.out.printf("TEST3");
+		 JOptionPane.showMessageDialog(null, parti.obtenirTabDepute(), "liste de supporteurs du parti de droite", 0);
+	}
+	
 	/**
 	 * affiche le nom et le parti des membres de la conscription choisie.
 	 * 

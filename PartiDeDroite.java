@@ -12,8 +12,8 @@ public class PartiDeDroite extends Parti
 		super(parti);
 		this.listDepute = new ArrayList<Depute>();
 	}
-	
-	public String getCategorieDeDroite()
+	@Override
+	public String getCategorie()
 	{
 		return super.getCategorie() + " de droite";
 	}
@@ -22,14 +22,19 @@ public class PartiDeDroite extends Parti
 	{
 		if(this.listDepute.indexOf(depute) == Constantes.VIDE)
 		{
-			this.listDepute.add(new Depute(depute));
+			this.listDepute.add(depute);
 		}
 	}
 	
-	public String[] obtenirTabDepute()
+	public Depute[] obtenirTabDepute()
 	{
-		String[] tabDepute = new String[this.listDepute.size()];
+		Depute[] tabDepute = new Depute[this.listDepute.size()];
 		tabDepute = this.listDepute.toArray(tabDepute);
 		return tabDepute;
+	}
+	@Override
+	public String toString()
+	{
+		return super.toString()+ " " +this.getCategorie();
 	}
 }

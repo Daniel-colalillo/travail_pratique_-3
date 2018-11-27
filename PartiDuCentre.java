@@ -12,24 +12,29 @@ public class PartiDuCentre extends Parti
 		super(parti);
 		this.listCirconscription = new ArrayList<Circonscription>();
 	}
-	
-	public String getCategorieDeCentre()
+	@Override
+	public String getCategorie()
 	{
-		return super.getCategorie() + " de centre";
+		return super.getCategorie() + " du centre";
 	}
 	
 	public void ajouterCirconscription(Circonscription circonscription)
 	{
 		if(this.listCirconscription.indexOf(circonscription) == Constantes.VIDE)
 		{
-			//this.listCirconscription.add(new Circonscription(circonscription));
+			this.listCirconscription.add(circonscription);
 		}
 	}
 	
-	public String[] obtenirTabCirconscription()
+	public Circonscription[] obtenirTabCirconscription()
 	{
-		String[] tabCirconscription = new String[this.listCirconscription.size()];
+		Circonscription[] tabCirconscription = new Circonscription[this.listCirconscription.size()];
 		tabCirconscription = this.listCirconscription.toArray(tabCirconscription);
 		return tabCirconscription;
+	}
+	@Override
+	public String toString()
+	{
+		return super.toString()+ " " +this.getCategorie();
 	}
 }
