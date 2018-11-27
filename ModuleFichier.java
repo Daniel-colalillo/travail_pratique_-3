@@ -262,7 +262,8 @@ public class ModuleFichier {
 
 	   
 	   /**
-	    * 
+	    * Generer une categorie aleatoire pour chaque parti dans 
+	    * la collection de parti.
 	    * 
 	    * @param election
 	    * 
@@ -272,31 +273,44 @@ public class ModuleFichier {
 	    */
 	   public static void genererPartis(Election election)
 	   {
+		   /*
+		    * Strategie:
+		    * Utilisez une boucle for pour parcourir chaque élément de 
+		    * nomsPartiCollection. Utilisez la méthode alea() dans 
+		    * UtilitaireMath.java pour générer une catégorie aléatoire pour 
+		    * chaque parti. Ajoutez le nouveau parti à la partiCollection en 
+		    * utilisant la méthode ajouterParti().
+		    */
+		   
 		   Parti parti;
-
+		   
+		   //Generer un categorie pour chaque parti dans la collecion de parti.
 		   for(int i = 0; i < election.nomsPartiCollection.size();i++)
 		   {
-			   int nombre = UtilitaireMath.alea(1, Constantes.NB_CATERGORIES_PARTI);
+			   int categorie = 
+					   UtilitaireMath.alea(1, Constantes.NB_CATERGORIES_PARTI);
 			   
 			   String nomParti = election.nomsPartiCollection.get(i); 
 			   
-			   if (nombre == Constantes.PARTI_DE_GAUCHE)
+			   //Verifier la categorie generer pour la parti
+			   if (categorie == Constantes.PARTI_DE_GAUCHE)
 			   {
+				   //initialise une nouvelle parti de type PartiDeGauche
 				   parti = new PartiDeGauche(nomParti);
 			   }
-			   else if (nombre == Constantes.PARTI_DU_CENTRE)
+			   else if (categorie == Constantes.PARTI_DU_CENTRE)
 			   {
+				   //initialise une nouvelle parti de type PartiDuCentre
 				   parti = new PartiDuCentre(nomParti);
 			   }
 			   else
 			   {
+				   //initialise une nouvelle parti de type PartiDeDroite
 				   parti = new PartiDeDroite(nomParti);
 			   }
-			   //System.out.println(nombre+" "+nomParti);
 			   
+			   //Ajouter la nouvelle parti au collection de parti.
 			   election.ajouterParti(parti);
-			   
-			   //System.out.println(election.partiCollection.get(i).toString());
 		   }
 	   }
 	   
