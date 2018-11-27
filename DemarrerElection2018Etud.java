@@ -2,6 +2,7 @@
 
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,12 +20,6 @@ public class DemarrerElection2018Etud {
 		
 		String[] tabMenuPremierFois = {"Ouvrir fichier texte", 
 				                       "Ouvrir fichier binaire"};
-		
-		String[] tabMenuOptions = 
-			{"Voir tous les députés d’une circonscription",
-				"Voir tous les députés d’un parti",
-				"Voir le parti et la circonscription d’un député",
-				"Quitter"};
 		
 		
 		preparerPourMac();
@@ -60,43 +55,69 @@ public class DemarrerElection2018Etud {
 		
 		ModuleFichier.genererPartis(election);
 		
-		String options = null;
-		while(true){
-		//laisser l'utilisateur choisir une option et la sauvegarder
-		options = (String) JOptionPane.showInputDialog(null, 
-                "Sélectionnez le parametre que vous voulez voir", 
-                "Type de parametre (députés d’une circonscription,"
-                + " députés d’un parti , "
-                + "parti et la circonscription d’un député, ou quitter?)", 
-                0, null, tabMenuOptions, 0);
+		ModuleFichier.genererSupporteurs(election);
 		
-		//Voir tous les députés d’une circonscription
-		if(options.equals(tabMenuOptions[0])) {
+		//String options = null;
+		
+		List<String> choix = new ArrayList<String>();
+		
+		
+		String [] tabChoix = new String [election.partiCollection.size()];
+		//System.out.print(election.partiCollection.size());
+		
+		for(int i = 0; i < election.partiCollection.size(); i++){
 			
-			nomCirconscription(election);
-			
+			choix.add(election.partiCollection.get(i).toString());
 		}
 		
-		//Voir tous les députés d’un parti
-		else if(options.equals(tabMenuOptions[1])){
-			
-			nomParti(election);
-			
-		}
+		choix.toArray(tabChoix);
+	while(true){
+		 String input = (String) JOptionPane.showInputDialog(null, "choisi parti",
+			        "choisi parti", JOptionPane.QUESTION_MESSAGE, null, 
+			        tabChoix, // Array of choices
+			        tabChoix[0]); // Initial choice
 		
-		else if(options.equals(tabMenuOptions[2])){
-			
-			nomsDepute(election);
-			
-		}
+		 int index = choix.indexOf(input);
+		 
 		
-		else if(options.equals(tabMenuOptions[3])){
-			
-			quitter(election);
-			
-		}	
-		}
+			 
+		 if(election.partiCollection.get(index).getCategorie().equals("Parti de gauche") ){
+			   
+			 obtenirSup((PartiDeGauche)election.partiCollection.get(index));
+		 }
+		 else if(election.partiCollection.get(index).getCategorie().equals("Parti du centre")){
+			   
+			 obtenirSup((PartiDuCentre)election.partiCollection.get(index));
+		 }
+		 else obtenirSup((PartiDeDroite)election.partiCollection.get(index));
+		 
+		 
+		// JOptionPane.showMessageDialog(null, index, "parti et categorie", 0);
+		
 	}
+	
+	}
+	public static void obtenirSup(PartiDeGauche parti){
+		//test
+		//System.out.printf("TEST1");
+		 JOptionPane.showMessageDialog(null, parti.listOBNL.size(), "nombre de supporteurs OBNL", 0);
+		
+	}
+	
+	public static void obtenirSup(PartiDuCentre parti){
+		
+		//test
+		//System.out.printf("TEST2");
+		 JOptionPane.showMessageDialog(null, parti.obtenirTabCirconscription(), "liste de supporteurs du parti du centre", 0);
+	}
+
+
+	public static void obtenirSup(PartiDeDroite parti){
+		//test
+		//System.out.printf("TEST3");
+		 JOptionPane.showMessageDialog(null, parti.obtenirTabDepute(), "liste de supporteurs du parti de droite", 0);
+	}
+	
 	/**
 	 * affiche le nom et le parti des membres de la conscription choisie.
 	 * 

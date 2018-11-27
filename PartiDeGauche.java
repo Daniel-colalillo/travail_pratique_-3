@@ -13,6 +13,7 @@ public class PartiDeGauche extends Parti
 		this.listOBNL = new ArrayList<String>();
 	}
 	
+	@Override
 	public String getCategorie()
 	{
 		return super.getCategorie() + " de gauche";
@@ -22,7 +23,7 @@ public class PartiDeGauche extends Parti
 	{
 		if(this.listOBNL.indexOf(nomOBNL) == Constantes.VIDE)
 		{
-			this.listOBNL.add(new String(nomOBNL));
+			this.listOBNL.add(nomOBNL);
 		}
 	}
 	
@@ -31,5 +32,10 @@ public class PartiDeGauche extends Parti
 		String[] tabOBNL = new String[this.listOBNL.size()];
 		tabOBNL = this.listOBNL.toArray(tabOBNL);
 		return tabOBNL;
+	}
+	@Override
+	public String toString()
+	{
+		return super.toString()+ " " +this.getCategorie();
 	}
 }

@@ -20,5 +20,9 @@ public class Constantes {
 	public static final int PARTI_DE_GAUCHE = 1;
 	public static final int PARTI_DU_CENTRE = 2;
 	public static final int PARTI_DE_DROITE = 3;
+	
+	public static final int NB_OBNL_MAX = 25;
+	public static final int NB_CIRCONSCRIPTIONS_MAX = 20;
+	public static final int NB_DEPUTE_MAX = 10;
    
 }

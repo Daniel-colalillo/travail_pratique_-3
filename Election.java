@@ -39,6 +39,7 @@ public class Election implements Serializable{
 	List<Parti> partiCollection = new ArrayList<Parti>();
 	
 	
+	
 	int[][] index;
 
 	
@@ -58,7 +59,6 @@ public int getnumeroDePartiCollection(){
 	return partiCollection.size();
 }
 
-	
 	/**
 	 * initialise un index
 	 * 
@@ -138,7 +138,7 @@ public int getnumeroDePartiCollection(){
 		 */
 		
 		//si le nom ne se trouve pas dans la liste, ajoutez-y
-		if(partiCollection.indexOf(parti) == -1) partiCollection.add(new Parti(parti));
+		if(!partiCollection.contains(parti)) partiCollection.add(parti);
 
 	}
 	
