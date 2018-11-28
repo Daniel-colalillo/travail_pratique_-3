@@ -42,19 +42,46 @@ public class Election implements Serializable{
 	
 	int[][] index;
 
-	
+	/**
+	 * retourne la taille de la collection depute
+	 * 
+	 * 
+	 * @author Daniel Colalillo
+	 * @since 11/6/2018
+	 * @version 1.0.0
+	 */
 public int getNombreDepute(){
 	
 	return deputeCollection.size();
 }
 
-
+/**
+ * retourne la taille de la collection circonscription
+ * 
+ * 
+ * @author Daniel Colalillo
+ * @since 11/6/2018
+ * @version 1.0.0
+ */
 public int getNombreCirconscription(){
 	
 	return circonscriptionCollection.size();
 }
 
+
+/**
+ * retourne la taille de la parti collection
+ * 
+ * 
+ * @author Daniel Colalillo
+ * @since 11/6/2018
+ * @version 1.0.0
+ */
 public int getnumeroDePartiCollection(){
+	
+	/*
+	 * Strategie:
+	 */
 	
 	return partiCollection.size();
 }
@@ -142,23 +169,73 @@ public int getnumeroDePartiCollection(){
 
 	}
 	
+	
+	/**
+	 * retourne un tableau du partiCollection
+	 * 
+	 * @return tableau de particollection
+	 * 
+	 * @author Daniel Colalillo
+	 * @since 11/8/2018
+	 * @version 1.0.0
+	 */
 	public Parti[] retourneTableauParti(){
-		Parti [] Parti = new Parti[partiCollection.size()];
 		
-		partiCollection.toArray(Parti);
+		/*
+		 * strategie: 
+		 * creer un nouveau parti et rempli le avec particollection.
+		 * 
+		 */
+		
+		// creer un nouveau parti et rempli le avec la particollection
+		Parti [] Parti = partiCollection.
+				toArray(new Parti[partiCollection.size()]);
 		
 		return Parti;
-		
 	}
 	
+	
+	/**
+	 * retourne le depute de l'index d'entrée
+	 * 
+	 * @param int i
+	 * 
+	 * @return depute a lindice i
+	 * 
+	 * @author Daniel Colalillo
+	 * @since 11/8/2018
+	 * @version 1.0.0
+	 */
 	public Depute retourneDepute(int i){
+		
+		/*
+		 * strategie: 
+		 * retourne le depute désiré en utilisant la parametres du fonction
+		 * 
+		 */
+		
 	
 		return deputeCollection.get(i);
 	}
 	
+	/**
+	 * retourne la circonscription avec l'index des paramètres
+	 * 
+	 * @param int i
+	 * 
+	 * @return circonscription a lindice i
+	 * 
+	 * @author Daniel Colalillo
+	 * @since 11/8/2018
+	 * @version 1.0.0
+	 */
+	
 	public Circonscription obtenirCirconscription(int i){
 		
-		return (i < circonscriptionCollection.size())?circonscriptionCollection.get(i): null;
+		// si la collection est pas vide retourne la reponse sinon 
+		// reoturne null
+		return (i < circonscriptionCollection.size())
+				?circonscriptionCollection.get(i): null;
 	 
 	}
 	
