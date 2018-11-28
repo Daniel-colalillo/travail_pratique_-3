@@ -23,6 +23,7 @@ public class Constantes {
 	
 	public static final int NB_OBNL_MAX = 25;
 	public static final int NB_CIRCONSCRIPTIONS_MAX = 20;
-	public static final int NB_DEPUTE_MAX = 10;
+	public static final int NB_DEPUTE = 10;
+	public static final int NB_DEPUTE_MAX = 939;
    
 }

@@ -314,10 +314,10 @@ public class ModuleFichier {
 		   }
 	   }
 	   
+	   
 	   public static void genererSupporteurs(Election election){
 		   
-		   
-		   
+		
 		   for(int i = 0; i < election.getnumeroDePartiCollection(); i++){
 			   Parti parti = election.partiCollection.get(i);
 			   //System.out.println(parti.getCategorie());
@@ -337,10 +337,28 @@ public class ModuleFichier {
 		   }
 	   }
 	   
+	   /**
+	    * générer au hasard les supporteurs du parti de gauche
+	    * 
+	    * @param PartiDeGauche parti
+	    * 
+	    * @author Daniel Colalillo
+	    * @since 11/19/2018
+	    * @version 1.0.0
+	    */
 	   public static void genererSupOBNL(PartiDeGauche parti){
 		   
-		   int nombreChaineVide = UtilitaireMath.alea(1, Constantes.NB_OBNL_MAX);
+		    /*
+			 * strategie: 
+			 * en utilisant utilitaireMath générer un nombre de chaine vide 
+			 * aléatoire et l'ajouter à la collection obnl
+			 * 
+			 */
 		   
+		   // nombre de chaine vide a ajouter a la collection OBNL
+		   int nombreChaineVide= UtilitaireMath.alea(1,Constantes.NB_OBNL_MAX);
+		   
+		   // ajouter des chaines vide a obnl
 		   for(int i = 0; i < nombreChaineVide; i++){
 		   
 		   parti.ajouterOBNL("");
@@ -349,24 +367,52 @@ public class ModuleFichier {
 	   }
 	   
 	   
+	   /**
+	    * générer au hasard les supporteurs du parti du centre
+	    * 
+	    * @param PartiDuCentre parti, Election election
+	    * 
+	    * @author Daniel Colalillo
+	    * @since 11/19/2018
+	    * @version 1.0.0
+	    */
 	   public static void generezSupCirconscritpion(PartiDuCentre parti, 
 			   Election election){
 		   
-		   int max = UtilitaireMath.alea(1, Constantes.NB_CIRCONSCRIPTIONS_MAX);
+		   /*
+			 * strategie: 
+			 * générer un nombre aléatoire de supporters et une partie 
+			 * aléatoire pour eux en utilisant utilitairemath, vérifie 
+			 * également si les parties doublent et, en utilisant une 
+			 * boucle while, génère une partie aléatoire jusqu'à ce qu'une 
+			 * partie non prise soit générée
+			 * 
+			 */
+		   
+		   // générer un nombre aléatoire de supporteurs
+		   int max= UtilitaireMath.alea(1, Constantes.NB_CIRCONSCRIPTIONS_MAX);
 			   
 		   Circonscription circTemporaire;
-			   
+			    
 			   for(int i = 0; i < max; i++){
 				   
-				   circTemporaire = election.obtenirCirconscription(UtilitaireMath.alea(0, Constantes.NB_CIRCONSCRIPTIONS_MAX));
+				   // générer un parti aléatoire
+				   circTemporaire = election.obtenirCirconscription(
+						   UtilitaireMath.alea(0, 
+								   Constantes.NB_CIRCONSCRIPTIONS_MAX));
 					  
-				   
+				   // si le parti existe déjà en générer un nouveau
 				   while(parti.listCirconscription.contains(circTemporaire)){
 					   
-					   circTemporaire = election.obtenirCirconscription(UtilitaireMath.alea(0, Constantes.NB_CIRCONSCRIPTIONS_MAX));
+					   //générer un parti aléatoire
+					   circTemporaire = election.obtenirCirconscription(
+							   UtilitaireMath.alea(0, 
+									   Constantes.NB_CIRCONSCRIPTIONS_MAX));
 						  
 				   }
 			   
+				   // ajouter le nouveau parti à la collection de la 
+				   //circonscription
 				   parti.ajouterCirconscription(circTemporaire);
 			   
 			   }
@@ -374,30 +420,50 @@ public class ModuleFichier {
 	   }
 	   
 	   
+	   /**
+	    * générer au hasard les supporteurs du parti de droite
+	    * 
+	    * @param PartiDeDroite parti, Election election
+	    * 
+	    * @author Daniel Colalillo
+	    * @since 11/19/2018
+	    * @version 1.0.0
+	    */
 	   public static void generezSupDepute(PartiDeDroite parti, 
 			   Election election){
 		   
-		   int nombreDepute = UtilitaireMath.alea(1, Constantes.NB_DEPUTE_MAX);
+		   /*
+			 * strategie: 
+			 * générer un nombre aléatoire de supporters et une partie 
+			 * aléatoire pour eux en utilisant utilitairemath, vérifie 
+			 * également si les parties doublent et, en utilisant une 
+			 * boucle while, génère une partie aléatoire jusqu'à ce qu'une 
+			 * partie non prise soit générée
+			 * 
+			 */
+		   
+		   int nombreDepute = UtilitaireMath.alea(1, Constantes.NB_DEPUTE);
 		   
 		   Depute depuTemporaire;
 				   
 		   for(int i = 0 ;i < nombreDepute; i++){
-					   
-			   depuTemporaire = election.deputeCollection.get(UtilitaireMath.alea(1, Constantes.NB_DEPUTE_MAX));
 			   
-			   while(parti.listDepute.contains(depuTemporaire)){ 
-				   //|| 
-					   //election.partiCollection.get(nombreDepute).getCategorie().equals("Parti de droite")){
+			// générer un parti aléatoire	   
+			   depuTemporaire = election.deputeCollection.get(
+					   UtilitaireMath.alea(1, Constantes.NB_DEPUTE_MAX));
+			   
+			   int noDeputeTemp = depuTemporaire.getNumParti();
+			   
+			// si le parti existe déjà en générer un nouveau
+			   while(parti.listDepute.contains(depuTemporaire)){
 		    			
-				   	depuTemporaire = election.deputeCollection.get(UtilitaireMath.alea(1, Constantes.NB_DEPUTE_MAX));
+				   	depuTemporaire = election.deputeCollection.get(
+				   			UtilitaireMath.alea(1, Constantes.NB_DEPUTE_MAX));
 					
 			   }
-			   
-			    parti.ajouterDepute(depuTemporaire);
-			   
+			   // ajouter le nouveau parti à la collection de la 
+			   //depute
+			    parti.ajouterDepute(depuTemporaire);	   
 		   }
-		   
-
 	   }
-	   
 }
