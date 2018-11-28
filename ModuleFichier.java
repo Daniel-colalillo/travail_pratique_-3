@@ -314,16 +314,30 @@ public class ModuleFichier {
 		   }
 	   }
 	   
-	   
+	   /**
+	    * générer au hasard les supporteurs des partie
+	    * 
+	    * @param Election election
+	    * 
+	    * @author Daniel Colalillo
+	    * @since 11/19/2018
+	    * @version 1.0.0
+	    */
 	   public static void genererSupporteurs(Election election){
 		   
-		
+		    /*
+			 * strategie: 
+			 * vérifie à quelle partie appartient chaque supporter et 
+			 * l'ajoute à la collection correcte.
+			 * 
+			 */
+		   
+		   // générer des partis pour autant de partis existent
 		   for(int i = 0; i < election.getnumeroDePartiCollection(); i++){
 			   Parti parti = election.partiCollection.get(i);
-			   //System.out.println(parti.getCategorie());
-			   //System.out.print(i);
 			   
-			   
+			   // vérifier à quelle catégorie appartient le parti
+			   // générer des supporters pour chaque catégorie
 			   if(parti.getCategorie().equals("Parti de gauche") ){
 				   
 				   genererSupOBNL((PartiDeGauche) parti);
