@@ -53,69 +53,111 @@ public class DemarrerElection2018Etud {
 			election = ModuleFichier.getElectionBinaire();
 		}
 		
+		// generer les parti pour l'election
 		ModuleFichier.genererPartis(election);
 		
+		// genere les supporteurs
 		ModuleFichier.genererSupporteurs(election);
 		
-		//String options = null;
-		
 		List<String> choix = new ArrayList<String>();
-		
-		
+			
 		String [] tabChoix = new String [election.partiCollection.size()];
-		//System.out.print(election.partiCollection.size());
 		
+		// rempli choix avec parti collection
 		for(int i = 0; i < election.partiCollection.size(); i++){
 			
 			choix.add(election.partiCollection.get(i).toString());
 		}
 		
 		choix.toArray(tabChoix);
-	while(true){
-		 String input = (String) JOptionPane.showInputDialog(null, "choisi parti",
-			        "choisi parti", JOptionPane.QUESTION_MESSAGE, null, 
-			        tabChoix, // Array of choices
-			        tabChoix[0]); // Initial choice
+	
+		while(true){
+			
+			// menu pour choisir quelle parti a voir
+			String input = (String) JOptionPane.showInputDialog(null, "choisi parti",
+			        	"choisi parti", JOptionPane.QUESTION_MESSAGE, null, 
+			        	tabChoix, // tableau de choix
+			        	tabChoix[0]); // choix initial
 		
-		 int index = choix.indexOf(input);
-		 
-		
-			 
-		 if(election.partiCollection.get(index).getCategorie().equals("Parti de gauche") ){
+			// index du choix
+			int index = choix.indexOf(input);
+		  
+			if(election.partiCollection.get(index).getCategorie().equals("Parti de gauche") ){
 			   
-			 obtenirSup((PartiDeGauche)election.partiCollection.get(index));
-		 }
-		 else if(election.partiCollection.get(index).getCategorie().equals("Parti du centre")){
+				obtenirSup((PartiDeGauche)election.partiCollection.get(index));
+			}
+			
+			else if(election.partiCollection.get(index).getCategorie().equals("Parti du centre")){
 			   
-			 obtenirSup((PartiDuCentre)election.partiCollection.get(index));
-		 }
-		 else obtenirSup((PartiDeDroite)election.partiCollection.get(index));
-		 
-		 
-		// JOptionPane.showMessageDialog(null, index, "parti et categorie", 0);
+				obtenirSup((PartiDuCentre)election.partiCollection.get(index));
+			}
+			
+			else obtenirSup((PartiDeDroite)election.partiCollection.get(index));
 		
 	}
 	
-	}
+}
+	
+	/**
+	 * afficher les supporters obnl
+	 * 
+	 * @param PartiDeGauche parti
+	 * 
+	 * @author Daniel Colalillo
+	 * @since 11/27/2018
+	 * @version 1.0.0
+	 */
 	public static void obtenirSup(PartiDeGauche parti){
-		//test
-		//System.out.printf("TEST1");
-		 JOptionPane.showMessageDialog(null, parti.listOBNL.size(), "nombre de supporteurs OBNL", 0);
+
+		/*
+		 * Strategie:
+		 * afficher les supporters obnl en utilisant joptionpane et listOBNL
+		 */
 		
+		 JOptionPane.showMessageDialog(null, parti.listOBNL.size(),
+				 "nombre de supporteurs OBNL", 0);
 	}
 	
+	/**
+	 * afficher les supporteurs du partie du centre
+	 * 
+	 * @param PartiDuCentre parti
+	 * 
+	 * @author Daniel Colalillo
+	 * @since 11/27/2018
+	 * @version 1.0.0
+	 */
 	public static void obtenirSup(PartiDuCentre parti){
 		
-		//test
-		//System.out.printf("TEST2");
-		 JOptionPane.showMessageDialog(null, parti.obtenirTabCirconscription(), "liste de supporteurs du parti du centre", 0);
+		/*
+		 * Strategie:
+		 * afficher les supporters en utilisant joptionpane et 
+		 * parti.obtenirTabCirconscription()
+		 */
+		
+		 JOptionPane.showMessageDialog(null, parti.obtenirTabCirconscription(),
+				 "liste de supporteurs du parti du centre", 0);
 	}
 
-
+	/**
+	 * afficher les supporteurs du partie de droite
+	 * 
+	 * @param int PartiDeDroite parti
+	 * 
+	 * @author Daniel Colalillo
+	 * @since 11/27/2018
+	 * @version 1.0.0
+	 */
 	public static void obtenirSup(PartiDeDroite parti){
-		//test
-		//System.out.printf("TEST3");
-		 JOptionPane.showMessageDialog(null, parti.obtenirTabDepute(), "liste de supporteurs du parti de droite", 0);
+		
+		/*
+		 * Strategie:
+		 * afficher les supporters en utilisant joptionpane et 
+		 * parti.obtenirTabDepute()
+		 */
+
+		 JOptionPane.showMessageDialog(null, parti.obtenirTabDepute(), 
+				 "liste de supporteurs du parti de droite", 0);
 	}
 	
 	/**
