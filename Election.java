@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.Arrays;
 import java.io.IOException;
 import java.io.Serializable;
+import java.lang.reflect.Array;
 
 public class Election implements Serializable{
 	
@@ -440,6 +441,113 @@ public int getnumeroDePartiCollection(){
 			
 		//return tabNomsDepute;		
 	}
+	
+	
+	/**
+	 * Retourne le nom de tous les députés d'un parti en ordre croissant.
+            *
+	 * @param nomParti Le nom du parti cherché
+	 * @return Un tableau des noms des députés de ce parti
+	 */
+	public String[]  obtenirNomsDeputesParParti(String nomParti) {
+		
+		int numParti = nomsPartiCollection.indexOf(nomParti);
+		
+		List<String> depute = new ArrayList<String>();
+		
+		for(int i = 0; i < Constantes.NB_CATERGORIES_PARTI; i++){
+			
+			if(index[numParti][i] != Constantes.VIDE){
+				
+				depute.add(deputeCollection.get(index[numParti][i]).toString());
+			}
+		}
+		String [] deput = new String [depute.size()];
+		
+		deput = depute.toArray(deput);
+		
+		Arrays.sort(deput);
+		
+		return deput;
+	}
+	
+	
+	/**
+	 * Retourne le nom de tous les supporteurs d'un parti en ordre croissant.
+            *
+	 * @param nomParti Le nom du parti cherché
+	 * @return Un tableau des noms des supporteurs de ce parti
+	 */
+	public String[]  obtenirNomsSupporteursParParti(String nomParti) {
+		
+int numParti = nomsPartiCollection.indexOf(nomParti);
+		
+		String[] supporteurs;
+		
+		if(partiCollection.get(numParti).getCategorie().equals("Parti de gauche") ){
+			
+			supporteurs = obtenirsupporteurs((PartiDeGauche) partiCollection.get(numParti));
+		}
+		else if(partiCollection.get(numParti).getCategorie().equals("Parti du centre")){
+		   
+			supporteurs = obtenirsupporteurs((PartiDuCentre) partiCollection.get(numParti));
+		}
+		else{
+			
+			supporteurs = obtenirsupporteurs((PartiDeDroite) partiCollection.get(numParti));
+		} 
+		Arrays.sort(supporteurs);
+		
+		return supporteurs;
+	}
+	
+	public String [] obtenirsupporteurs(PartiDuCentre parti){
+		
+		int max = parti.obtenirTabCirconscription().length;
+		
+		String [] supporteur = new String [max];
+		
+		Circonscription[] tableau = parti.obtenirTabCirconscription();
+		
+		for( int i = 0; i < max; i++){
+			
+			supporteur[i] = tableau[i].toString();
+		}
+		return supporteur;	
+	}
+	
+	public String [] obtenirsupporteurs(PartiDeDroite parti){
+		
+		
+		int max = parti.obtenirTabDepute().length;
+		
+		String [] supporteur = new String [max];
+		
+		Depute[] tableau = parti.obtenirTabDepute();
+		
+		for( int i = 0; i < max; i++){
+			
+			supporteur[i] = tableau[i].toString();
+		}
+		return supporteur;		
+	}
+	
+	
+	public String [] obtenirsupporteurs(PartiDeGauche parti){
+		
+		int max = parti.obtenirTabOBNL().length;
+		
+		String [] supporteur = new String [max];
+		
+		String[] tableau = parti.obtenirTabOBNL();
+		
+		for( int i = 0; i < max; i++){
+			
+			supporteur[i] = tableau[i].toString();
+		}
+		return supporteur;		
+	}
+
 }
 
 

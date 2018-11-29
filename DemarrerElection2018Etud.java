@@ -72,13 +72,16 @@ public class DemarrerElection2018Etud {
 		choix.toArray(tabChoix);
 	
 		while(true){
-			
 			// menu pour choisir quelle parti a voir
 			String input = (String) JOptionPane.showInputDialog(null, "choisi parti",
 			        	"choisi parti", JOptionPane.QUESTION_MESSAGE, null, 
 			        	tabChoix, // tableau de choix
 			        	tabChoix[0]); // choix initial
 		
+			JOptionPane.showMessageDialog(null, election.obtenirNomsSupporteursParParti("Citoyens au pouvoir du Québec"));
+			
+			
+			
 			// index du choix
 			int index = choix.indexOf(input);
 		  
