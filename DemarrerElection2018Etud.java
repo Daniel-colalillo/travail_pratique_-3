@@ -59,11 +59,25 @@ public class DemarrerElection2018Etud {
 		// genere les supporteurs
 		ModuleFichier.genererSupporteurs(election);
 		
-		//String options = null;
 		
 		/*
+		 * 
+		 * 	MENU
+		 * 
+		 */
+		
+		//******************************
+		
+		//Thread t = new Thread(new Cadre("Election", election));
+		//t.start();
+		
+		//******************************
+		
+		
+		//REMOVE THIS AFTER GUI IS COMPLETE
+		
 		List<String> choix = new ArrayList<String>();
-
+			
 		String [] tabChoix = new String [election.partiCollection.size()];
 		
 		// rempli choix avec parti collection
@@ -73,47 +87,36 @@ public class DemarrerElection2018Etud {
 		}
 		
 		choix.toArray(tabChoix);
-		*/
-		
-		//TEST
-		String [] tabChoix = new String [election.nomsCirconscriptionCollection.size()];
-		
-		tabChoix = election.nomsCirconscriptionCollection.toArray(tabChoix);
-		
+	
 		while(true){
-			String input = (String) JOptionPane.showInputDialog(null, "choisi circonscription",
-			        "choisi circonscription", JOptionPane.QUESTION_MESSAGE, null, 
-			        tabChoix, // Array of choices
-			        tabChoix[0]); // Initial choice
 			
-			String[] nomsPartiParCirc = election.obtenirNomsPartisParCirconscrition(input);
-			String[] nomsDeputeParCirc = election.obtenirNomsDeputesParCirconscription(input, nomsPartiParCirc);
-			
-			JOptionPane.showMessageDialog(null, nomsPartiParCirc, "Noms Des Partis De La Circonscription", 0);
-			
-			JOptionPane.showMessageDialog(null, nomsDeputeParCirc, "Noms Des Deputes De La Circonscription", 0);
-			
-		/*
-		 	String input = (String) JOptionPane.showInputDialog(null, "choisi parti",
-			        "choisi parti", JOptionPane.QUESTION_MESSAGE, null, 
-			        tabChoix, // Array of choices
-			        tabChoix[0]); // Initial choice
+			// menu pour choisir quelle parti a voir
+			String input = (String) JOptionPane.showInputDialog(null, 
+						"choisi parti", "choisi parti", 
+			        	JOptionPane.QUESTION_MESSAGE, null, 
+			        	tabChoix, // tableau de choix
+			        	tabChoix[0]); // choix initial
 		
-		 	int index = choix.indexOf(input);
-		 
-		 	if(election.partiCollection.get(index).getCategorie().equals("Parti de gauche") ){
+			// index du choix
+			int index = choix.indexOf(input);
+		  
+			if(election.partiCollection.get(index).getCategorie()
+					.equals("Parti de gauche") ){
 			   
-			 	obtenirSup((PartiDeGauche)election.partiCollection.get(index));
-		 	}
-		 	else if(election.partiCollection.get(index).getCategorie().equals("Parti du centre")){
+				obtenirSup((PartiDeGauche)election.partiCollection.get(index));
+			}
+			
+			else if(election.partiCollection.get(index).getCategorie()
+					.equals("Parti du centre")){
 			   
-			 	obtenirSup((PartiDuCentre)election.partiCollection.get(index));
-		 	}
-		 	else obtenirSup((PartiDeDroite)election.partiCollection.get(index));
-		*/
+				obtenirSup((PartiDuCentre)election.partiCollection.get(index));
+			}
+			
+			else obtenirSup((PartiDeDroite)election.partiCollection.get(index));
+		
 		}
 	
-}
+	}
 	
 	/**
 	 * afficher les supporters obnl

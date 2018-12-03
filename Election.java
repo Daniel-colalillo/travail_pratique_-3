@@ -448,7 +448,7 @@ public int getnumeroDePartiCollection(){
 	 * @param nom Le nom de la circonscription cherchee
 	 * @return Un tableau de noms des partis de la circonscription
 	 */
-	public String[] obtenirNomsPartisParCirconscrition(String nom)
+	public String[] obtenirNomsPartisParCirconscription(String nom)
 	{
 		int noCirc = nomsCirconscriptionCollection.indexOf(nom);
 		
