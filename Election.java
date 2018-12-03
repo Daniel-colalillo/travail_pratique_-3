@@ -420,6 +420,8 @@ public int getnumeroDePartiCollection(){
 		}
 		
 		return tabNomDesDeputes;
+		
+		
 	}
 }
 
