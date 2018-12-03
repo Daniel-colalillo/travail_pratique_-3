@@ -53,17 +53,20 @@ public class DemarrerElection2018Etud {
 			election = ModuleFichier.getElectionBinaire();
 		}
 		
+		// generer les parti pour l'election
 		ModuleFichier.genererPartis(election);
 		
+		// genere les supporteurs
 		ModuleFichier.genererSupporteurs(election);
 		
 		//String options = null;
 		
 		/*
 		List<String> choix = new ArrayList<String>();
-		
+
 		String [] tabChoix = new String [election.partiCollection.size()];
 		
+		// rempli choix avec parti collection
 		for(int i = 0; i < election.partiCollection.size(); i++){
 			
 			choix.add(election.partiCollection.get(i).toString());
@@ -110,26 +113,68 @@ public class DemarrerElection2018Etud {
 		*/
 		}
 	
-	}
+}
+	
+	/**
+	 * afficher les supporters obnl
+	 * 
+	 * @param PartiDeGauche parti
+	 * 
+	 * @author Daniel Colalillo
+	 * @since 11/27/2018
+	 * @version 1.0.0
+	 */
 	public static void obtenirSup(PartiDeGauche parti){
-		//test
-		//System.out.printf("TEST1");
-		 JOptionPane.showMessageDialog(null, parti.listOBNL.size(), "nombre de supporteurs OBNL", 0);
+
+		/*
+		 * Strategie:
+		 * afficher les supporters obnl en utilisant joptionpane et listOBNL
+		 */
 		
+		 JOptionPane.showMessageDialog(null, parti.listOBNL.size(),
+				 "nombre de supporteurs OBNL", 0);
 	}
 	
+	/**
+	 * afficher les supporteurs du partie du centre
+	 * 
+	 * @param PartiDuCentre parti
+	 * 
+	 * @author Daniel Colalillo
+	 * @since 11/27/2018
+	 * @version 1.0.0
+	 */
 	public static void obtenirSup(PartiDuCentre parti){
 		
-		//test
-		//System.out.printf("TEST2");
-		 JOptionPane.showMessageDialog(null, parti.obtenirTabCirconscription(), "liste de supporteurs du parti du centre", 0);
+		/*
+		 * Strategie:
+		 * afficher les supporters en utilisant joptionpane et 
+		 * parti.obtenirTabCirconscription()
+		 */
+		
+		 JOptionPane.showMessageDialog(null, parti.obtenirTabCirconscription(),
+				 "liste de supporteurs du parti du centre", 0);
 	}
 
-
+	/**
+	 * afficher les supporteurs du partie de droite
+	 * 
+	 * @param int PartiDeDroite parti
+	 * 
+	 * @author Daniel Colalillo
+	 * @since 11/27/2018
+	 * @version 1.0.0
+	 */
 	public static void obtenirSup(PartiDeDroite parti){
-		//test
-		//System.out.printf("TEST3");
-		 JOptionPane.showMessageDialog(null, parti.obtenirTabDepute(), "liste de supporteurs du parti de droite", 0);
+		
+		/*
+		 * Strategie:
+		 * afficher les supporters en utilisant joptionpane et 
+		 * parti.obtenirTabDepute()
+		 */
+
+		 JOptionPane.showMessageDialog(null, parti.obtenirTabDepute(), 
+				 "liste de supporteurs du parti de droite", 0);
 	}
 	
 	/**
