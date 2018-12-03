@@ -59,11 +59,10 @@ public class DemarrerElection2018Etud {
 		
 		//String options = null;
 		
+		/*
 		List<String> choix = new ArrayList<String>();
 		
-		
 		String [] tabChoix = new String [election.partiCollection.size()];
-		//System.out.print(election.partiCollection.size());
 		
 		for(int i = 0; i < election.partiCollection.size(); i++){
 			
@@ -71,30 +70,45 @@ public class DemarrerElection2018Etud {
 		}
 		
 		choix.toArray(tabChoix);
-	while(true){
-		 String input = (String) JOptionPane.showInputDialog(null, "choisi parti",
+		*/
+		
+		//TEST
+		String [] tabChoix = new String [election.nomsCirconscriptionCollection.size()];
+		
+		tabChoix = election.nomsCirconscriptionCollection.toArray(tabChoix);
+		
+		while(true){
+			String input = (String) JOptionPane.showInputDialog(null, "choisi circonscription",
+			        "choisi circonscription", JOptionPane.QUESTION_MESSAGE, null, 
+			        tabChoix, // Array of choices
+			        tabChoix[0]); // Initial choice
+			
+			String[] nomsPartiParCirc = election.obtenirNomsPartisParCirconscrition(input);
+			String[] nomsDeputeParCirc = election.obtenirNomsDeputesParCirconscription(input, nomsPartiParCirc);
+			
+			JOptionPane.showMessageDialog(null, nomsPartiParCirc, "Noms Des Partis De La Circonscription", 0);
+			
+			JOptionPane.showMessageDialog(null, nomsDeputeParCirc, "Noms Des Deputes De La Circonscription", 0);
+			
+		/*
+		 	String input = (String) JOptionPane.showInputDialog(null, "choisi parti",
 			        "choisi parti", JOptionPane.QUESTION_MESSAGE, null, 
 			        tabChoix, // Array of choices
 			        tabChoix[0]); // Initial choice
 		
-		 int index = choix.indexOf(input);
+		 	int index = choix.indexOf(input);
 		 
-		
-			 
-		 if(election.partiCollection.get(index).getCategorie().equals("Parti de gauche") ){
+		 	if(election.partiCollection.get(index).getCategorie().equals("Parti de gauche") ){
 			   
-			 obtenirSup((PartiDeGauche)election.partiCollection.get(index));
-		 }
-		 else if(election.partiCollection.get(index).getCategorie().equals("Parti du centre")){
+			 	obtenirSup((PartiDeGauche)election.partiCollection.get(index));
+		 	}
+		 	else if(election.partiCollection.get(index).getCategorie().equals("Parti du centre")){
 			   
-			 obtenirSup((PartiDuCentre)election.partiCollection.get(index));
-		 }
-		 else obtenirSup((PartiDeDroite)election.partiCollection.get(index));
-		 
-		 
-		// JOptionPane.showMessageDialog(null, index, "parti et categorie", 0);
-		
-	}
+			 	obtenirSup((PartiDuCentre)election.partiCollection.get(index));
+		 	}
+		 	else obtenirSup((PartiDeDroite)election.partiCollection.get(index));
+		*/
+		}
 	
 	}
 	public static void obtenirSup(PartiDeGauche parti){
