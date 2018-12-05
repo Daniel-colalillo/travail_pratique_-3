@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
- * Programme pour suivre les élections du Québec en 2018
+ * Programme pour suivre les Ã©lections du QuÃ©bec en 2018
  * 
- * @author Pierre Bélisle
+ * @author Pierre BÃ©lisle
  * @version Copyright A2018
  * 
  * @revision Daniel Colalillo
@@ -25,18 +25,18 @@ public class DemarrerElection2018Etud {
 		preparerPourMac();
 		
 		/*
-		 * Les données sont chargées en mémoire.
+		 * Les donnÃ©es sont chargÃ©es en mÃ©moire.
 		 */
 		Election election = new Election(Constantes.ANNEE_ELECTION);
 		
 		String str = (String) JOptionPane.showInputDialog(null, 
-				                    "Sélectionnez le type de fichier", 
+				                    "SÃ©lectionnez le type de fichier", 
 				                    "Type de fichier (texte ou binaire?)", 
 				                    0, null, tabMenuPremierFois, 0);
 		
 		/*
 		 * 
-		 * À exécuter la première fois.
+		 * Ã€ exÃ©cuter la premiÃ¨re fois.
 		 * 
 		 */				
 		if(str.equals(tabMenuPremierFois[0])) {
@@ -45,7 +45,7 @@ public class DemarrerElection2018Etud {
 			election.genererIndex();
 			ModuleFichier.sauverFichierBinaire(election);
 		}		
-		/* A éxécuter seulement après que le fichier texte a été  ouvert
+		/* A Ã©xÃ©cuter seulement aprÃ¨s que le fichier texte a Ã©tÃ©  ouvert
 		 * et sauvegarder en binaire.
 		 */
 		else {
@@ -141,9 +141,9 @@ public class DemarrerElection2018Etud {
 		
 		/*
 		 * strategie: 
-		 * demander à l'utilisateur une conscription, 
-		 * vérifier le nombre de députés dans la conscription 
-		 * et afficher les députés associés et leurs partis à 
+		 * demander Ã  l'utilisateur une conscription, 
+		 * vÃ©rifier le nombre de dÃ©putÃ©s dans la conscription 
+		 * et afficher les dÃ©putÃ©s associÃ©s et leurs partis Ã  
 		 * l'aide d'une boucle pour remplir un tableau.
 		 * 
 		 */
@@ -157,23 +157,23 @@ public class DemarrerElection2018Etud {
 		
 		nomDeputeParti.add("nom Depute \t numero de parti\n");
 		
-		//demander à l'utilisateur une conscription et stocker la réponse dans 
+		//demander Ã  l'utilisateur une conscription et stocker la rÃ©ponse dans 
 		//des options
 		options = JOptionPane.showInputDialog(null, 
 				"choisi un circonscription", "circonscription", 
 				0, null, election.obtenirNomsCirconscription(), 0).toString();
 		
-		//convertir le nombre en son équivalent de chaîne
+		//convertir le nombre en son Ã©quivalent de chaÃ®ne
 		optionChoisi = election.nomsCirconscriptionCollection.indexOf(options);
 		
 		for( int i = 0; i < election.nomsPartiCollection.size(); i++)
 		{
-			//si l'index est vide ajouter pas une nouvelle chaîne
+			//si l'index est vide ajouter pas une nouvelle chaÃ®ne
 			if(election.index[optionChoisi][i] != Constantes.VIDE){
 				
-				//ajouter la partie indexée avec le nom du député en 
-				//utilisant la méthode de l'index pour obtenir la position
-				//des députés
+				//ajouter la partie indexÃ©e avec le nom du dÃ©putÃ© en 
+				//utilisant la mÃ©thode de l'index pour obtenir la position
+				//des dÃ©putÃ©s
 				nomDeputeParti.add(new String(election.deputeCollection.get
 						(election.index[optionChoisi][i]).getDepute()) + 
 						election.nomsPartiCollection.get(i));
@@ -181,8 +181,8 @@ public class DemarrerElection2018Etud {
 			
 		}
 		
-		//afficher la liste des députés et de leurs partis en fonction de 
-		//la conscription sélectionnée
+		//afficher la liste des dÃ©putÃ©s et de leurs partis en fonction de 
+		//la conscription sÃ©lectionnÃ©e
 		JOptionPane.showMessageDialog(null, nomDeputeParti.toArray(), 
 				"parti et depute", 0);
 		
@@ -310,7 +310,7 @@ public class DemarrerElection2018Etud {
 	}
 	
 	/*
-	 * Nécessaire à  JOptionPane sur un Mac
+	 * NÃ©cessaire Ã Â  JOptionPane sur un Mac
 	 */
 	public static void preparerPourMac() {
 
