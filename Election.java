@@ -445,18 +445,30 @@ public int getnumeroDePartiCollection(){
 	
 	/**
 	 * Retourne le nom de tous les députés d'un parti en ordre croissant.
-            *
+     *
 	 * @param nomParti Le nom du parti cherché
 	 * @return Un tableau des noms des députés de ce parti
+	 * 
+	 * @author Daniel Colalillo
+	 * @since 11/26/2018
+	 * @version 1.1.4
 	 */
 	public String[]  obtenirNomsDeputesParParti(String nomParti) {
 		
+		/*
+		 * Strategie:
+		 * utiliser des boucles pour vérifier s'il y a des données à entrer 
+		 * dans un tableau puis le trier
+		 */
+		
+		//récupère le nom du parti dans la collection du parti
 		int numParti = nomsPartiCollection.indexOf(nomParti);
 		
 		List<String> depute = new ArrayList<String>();
 		
 		for(int i = 0; i < Constantes.NB_CATERGORIES_PARTI; i++){
 			
+			//ajouter à la liste des députés si le député n'est pas vide
 			if(index[numParti][i] != Constantes.VIDE){
 				
 				depute.add(deputeCollection.get(index[numParti][i]).toString());
@@ -464,6 +476,7 @@ public int getnumeroDePartiCollection(){
 		}
 		String [] deput = new String [depute.size()];
 		
+		//créez ensuite un tableau, triez-le et renvoyez-le
 		deput = depute.toArray(deput);
 		
 		Arrays.sort(deput);
@@ -474,41 +487,84 @@ public int getnumeroDePartiCollection(){
 	
 	/**
 	 * Retourne le nom de tous les supporteurs d'un parti en ordre croissant.
-            *
+     *
+     *
 	 * @param nomParti Le nom du parti cherché
 	 * @return Un tableau des noms des supporteurs de ce parti
+	 * 
+	 * 
+	 * @author Daniel Colalillo
+	 * @since 11/26/2018
+	 * @version 1.3.8
 	 */
 	public String[]  obtenirNomsSupporteursParParti(String nomParti) {
 		
-int numParti = nomsPartiCollection.indexOf(nomParti);
+		/*
+		 * Strategie:
+		 * Vérifiez quelle partie l'utilisateur veut et lancez l'un 
+		 * des 3 programmes pour la gauche ou le centre
+		 */
+		
+		//convertir le nom du parti en son index
+		int numParti = nomsPartiCollection.indexOf(nomParti);
 		
 		String[] supporteurs;
 		
-		if(partiCollection.get(numParti).getCategorie().equals("Parti de gauche") ){
+		//Vérifiez quelle partie l'utilisateur veut et lancez l'un 
+		//des 3 programmes pour la gauche ou le centre
+		if(partiCollection.get(numParti).getCategorie()
+				.equals("Parti de gauche") ){
 			
-			supporteurs = obtenirsupporteurs((PartiDeGauche) partiCollection.get(numParti));
+			supporteurs = obtenirsupporteurs((PartiDeGauche) partiCollection.
+					get(numParti));
 		}
-		else if(partiCollection.get(numParti).getCategorie().equals("Parti du centre")){
+		else if(partiCollection.get(numParti).getCategorie()
+				.equals("Parti du centre")){
 		   
-			supporteurs = obtenirsupporteurs((PartiDuCentre) partiCollection.get(numParti));
+			supporteurs = obtenirsupporteurs((PartiDuCentre) partiCollection
+					.get(numParti));
 		}
 		else{
 			
-			supporteurs = obtenirsupporteurs((PartiDeDroite) partiCollection.get(numParti));
+			supporteurs = obtenirsupporteurs((PartiDeDroite) partiCollection
+					.get(numParti));
 		} 
+		// trier le tableau des supporters
 		Arrays.sort(supporteurs);
 		
 		return supporteurs;
 	}
 	
+	/**
+	 * obtient les supporters et remplit un tableau avec eux
+     *
+     *
+	 * @param PartiDuCentre parti
+	 * @return obtenirsupporteurs
+	 * 
+	 * 
+	 * @author Daniel Colalillo
+	 * @since 11/27/2018
+	 * @version 1.2.1
+	 */
 	public String [] obtenirsupporteurs(PartiDuCentre parti){
 		
+		/*
+		 * Strategie:
+		 * remplir un tableau avec les supporters. tostring () est utilisé pour 
+		 * ajouter du tableau partiel à un tableau régulier.
+		 * 
+		 */
+		
+		//définir la longueur du tableau à la longueur des tableaux parti
 		int max = parti.obtenirTabCirconscription().length;
 		
 		String [] supporteur = new String [max];
 		
+		//remplir un tableau avec les supporters de la circonscription.
 		Circonscription[] tableau = parti.obtenirTabCirconscription();
 		
+		//remplir le tout en convertissant tostring ()
 		for( int i = 0; i < max; i++){
 			
 			supporteur[i] = tableau[i].toString();
@@ -516,15 +572,37 @@ int numParti = nomsPartiCollection.indexOf(nomParti);
 		return supporteur;	
 	}
 	
+	
+	/**
+	 * obtient les supporters et remplit un tableau avec eux
+     *
+     *
+	 * @param PartiDeDroite parti
+	 * @return obtenirsupporteurs
+	 * 
+	 * 
+	 * @author Daniel Colalillo
+	 * @since 11/27/2018
+	 * @version 1.2.1
+	 */
 	public String [] obtenirsupporteurs(PartiDeDroite parti){
 		
+		/*
+		 * Strategie:
+		 * remplir un tableau avec les supporters. tostring () est utilisé pour 
+		 * ajouter du tableau partiel à un tableau régulier.
+		 * 
+		 */
 		
+		//définir la longueur du tableau à la longueur des tableaux parti
 		int max = parti.obtenirTabDepute().length;
 		
 		String [] supporteur = new String [max];
 		
+		//remplir un tableau avec les supporters de la circonscription.
 		Depute[] tableau = parti.obtenirTabDepute();
 		
+		//remplir le tout en convertissant tostring ()
 		for( int i = 0; i < max; i++){
 			
 			supporteur[i] = tableau[i].toString();
@@ -532,15 +610,36 @@ int numParti = nomsPartiCollection.indexOf(nomParti);
 		return supporteur;		
 	}
 	
-	
+	/**
+	 * obtient les supporters et remplit un tableau avec eux
+     *
+     *
+	 * @param PartiDeGauche parti
+	 * @return obtenirsupporteurs
+	 * 
+	 * 
+	 * @author Daniel Colalillo
+	 * @since 11/27/2018
+	 * @version 1.2.1
+	 */
 	public String [] obtenirsupporteurs(PartiDeGauche parti){
 		
+		/*
+		 * Strategie:
+		 * remplir un tableau avec les supporters. tostring () est utilisé pour 
+		 * ajouter du tableau partiel à un tableau régulier.
+		 * 
+		 */
+		
+		//définir la longueur du tableau à la longueur des tableaux parti
 		int max = parti.obtenirTabOBNL().length;
 		
 		String [] supporteur = new String [max];
 		
+		//remplir un tableau avec les supporters de la circonscription.
 		String[] tableau = parti.obtenirTabOBNL();
 		
+		//remplir le tout en convertissant tostring ()
 		for( int i = 0; i < max; i++){
 			
 			supporteur[i] = tableau[i].toString();
