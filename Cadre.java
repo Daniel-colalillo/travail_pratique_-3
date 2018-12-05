@@ -7,15 +7,13 @@ import javax.swing.JFrame;
 public class Cadre extends JFrame implements Runnable
 {
 	
-	// IS THIS NECESSARY?	(RELATE 1)
 	Election election;
 	
-	//PanneauBas panneau = new PanneauBas(election);
 	
 	public Cadre(String titre, Election election) 
 	{
 		super(titre);
-		// (RELATE 1)
+
 		this.election = election;
 	}
 	
@@ -27,12 +25,8 @@ public class Cadre extends JFrame implements Runnable
 		
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		
+		//hérite par composition
 		PanneauBas panneau = new PanneauBas(election);
-		
-		
-		/* HOW TO PASS ELECTION? (RELATE 1) */
-		//setContentPane(new PanneauHaut(election));
-		//setContentPane(panneau.getPanneau());
 	
 		add(panneau.getPanneau() , BorderLayout.SOUTH);
 		
