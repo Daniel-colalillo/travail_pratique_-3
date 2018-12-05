@@ -5,14 +5,15 @@ import java.util.LinkedList;
 import java.util.Arrays;
 import java.io.IOException;
 import java.io.Serializable;
+import java.lang.reflect.Array;
 
 public class Election implements Serializable{
 	
 	public int annee;
 	
 	/**
-	 * constructeur utilisé pour initialiser une classe en fonction des 
-	 * entrées de l'utilisateur
+	 * constructeur utilisÃ© pour initialiser une classe en fonction des 
+	 * entrÃ©es de l'utilisateur
 	 * 
 	 * @param int annee
 	 * 
@@ -142,12 +143,12 @@ public int getnumeroDePartiCollection(){
 	}
 	
 	/**
-	 * l’ajoutez à la collection de nomsPartiCollection et retournez la 
-	 * position où il a été ajouté.
+	 * lâ€™ajoutez Ã  la collection de nomsPartiCollection et retournez la 
+	 * position oÃ¹ il a Ã©tÃ© ajoutÃ©.
 	 * 
 	 * @param le String nom du parti.
 	 * 
-	 * @return position où il a été ajouté ou trouvé avec int index.
+	 * @return position oÃ¹ il a Ã©tÃ© ajoutÃ© ou trouvÃ© avec int index.
 	 * 
 	 * @author Daniel Colalillo
 	 * @since 10/27/2018
@@ -157,9 +158,9 @@ public int getnumeroDePartiCollection(){
 		
 		/*
 		 * strategie: 
-		 * vérifie si le nom du parti existe en utilisant la méthode 
+		 * vÃ©rifie si le nom du parti existe en utilisant la mÃ©thode 
 		 * .indexOf() puis s'il existe, retourne la position avec un index. 
-		 * toutefois, si elle n’existe pas, utilisez la méthode .add pour 
+		 * toutefois, si elle nâ€™existe pas, utilisez la mÃ©thode .add pour 
 		 * remplir la Parti collection.
 		 * 
 		 */
@@ -196,7 +197,7 @@ public int getnumeroDePartiCollection(){
 	
 	
 	/**
-	 * retourne le depute de l'index d'entrée
+	 * retourne le depute de l'index d'entrÃ©e
 	 * 
 	 * @param int i
 	 * 
@@ -210,7 +211,7 @@ public int getnumeroDePartiCollection(){
 		
 		/*
 		 * strategie: 
-		 * retourne le depute désiré en utilisant la parametres du fonction
+		 * retourne le depute dÃ©sirÃ© en utilisant la parametres du fonction
 		 * 
 		 */
 		
@@ -219,7 +220,7 @@ public int getnumeroDePartiCollection(){
 	}
 	
 	/**
-	 * retourne la circonscription avec l'index des paramètres
+	 * retourne la circonscription avec l'index des paramÃ¨tres
 	 * 
 	 * @param int i
 	 * 
@@ -243,12 +244,12 @@ public int getnumeroDePartiCollection(){
 	
 	
 	/**
-	 * l’ajoutez à la collection de nomsCirconscriptionCollection. Vous 
-	 * retenez la position où il a été ajouté que vous retournez.
+	 * lâ€™ajoutez Ã  la collection de nomsCirconscriptionCollection. Vous 
+	 * retenez la position oÃ¹ il a Ã©tÃ© ajoutÃ© que vous retournez.
 	 * 
-	 * @param le String nom et le int numéro de l’élu.
+	 * @param le String nom et le int numÃ©ro de lâ€™Ã©lu.
 	 * 
-	 * @return position où il a été ajouté avec int index.
+	 * @return position oÃ¹ il a Ã©tÃ© ajoutÃ© avec int index.
 	 * 
 	 * @author Daniel Colalillo
 	 * @since 10/27/2018
@@ -258,14 +259,14 @@ public int getnumeroDePartiCollection(){
 		
 		/*
 		 * strategie: 
-		 * vérifie si le nom existe en utilisant la méthode .indexOf () puis 
+		 * vÃ©rifie si le nom existe en utilisant la mÃ©thode .indexOf () puis 
 		 * s'il existe, retourne la position avec un index. toutefois, si 
-		 * elle n’existe pas, utilisez la méthode .add pour remplir la 
+		 * elle nâ€™existe pas, utilisez la mÃ©thode .add pour remplir la 
 		 * circonscription.
 		 * 
 		 */
 		
-		//cherche le nom entrée et l'insere dans un index
+		//cherche le nom entrÃ©e et l'insere dans un index
 		int index = nomsCirconscriptionCollection.indexOf(nom);
 		
 		//si le nom ne se trouve pas dans la liste, ajoutez-y
@@ -275,7 +276,7 @@ public int getnumeroDePartiCollection(){
 			
 			nomsCirconscriptionCollection.add(new String(nom));  //ajoute dans collection de noms
 			
-			//définir l'index de la nouvelle conscription comme dernière place du tableau
+			//dÃ©finir l'index de la nouvelle conscription comme derniÃ¨re place du tableau
 			index = circonscriptionCollection.size() - 1;
 		}
 		
@@ -284,12 +285,12 @@ public int getnumeroDePartiCollection(){
 	}
 		
 	/**
-	 * l’ajoutez à la collection de nomsPartiCollection et retournez la 
-	 * position où il a été ajouté.
+	 * lâ€™ajoutez Ã  la collection de nomsPartiCollection et retournez la 
+	 * position oÃ¹ il a Ã©tÃ© ajoutÃ©.
 	 * 
 	 * @param le String nom du parti.
 	 * 
-	 * @return position où il a été ajouté ou trouvé avec int index.
+	 * @return position oÃ¹ il a Ã©tÃ© ajoutÃ© ou trouvÃ© avec int index.
 	 * 
 	 * @author Daniel Colalillo
 	 * @since 10/27/2018
@@ -299,14 +300,14 @@ public int getnumeroDePartiCollection(){
 		
 		/*
 		 * strategie: 
-		 * vérifie si le nom du parti existe en utilisant la méthode 
+		 * vÃ©rifie si le nom du parti existe en utilisant la mÃ©thode 
 		 * .indexOf() puis s'il existe, retourne la position avec un index. 
-		 * toutefois, si elle n’existe pas, utilisez la méthode .add pour 
+		 * toutefois, si elle nâ€™existe pas, utilisez la mÃ©thode .add pour 
 		 * remplir la Parti collection.
 		 * 
 		 */
 	
-		//cherche le nom entrée et l'insere dans un index
+		//cherche le nom entrÃ©e et l'insere dans un index
 		int index = nomsPartiCollection.indexOf(nomParti);
 		
 		//si le nom ne se trouve pas dans la liste, ajoutez-y
@@ -314,7 +315,7 @@ public int getnumeroDePartiCollection(){
 			
 			nomsPartiCollection.add(new String(nomParti));
 		
-			//définir l'index de la nouvelle parti comme dernière place du tableau
+			//dÃ©finir l'index de la nouvelle parti comme derniÃ¨re place du tableau
 			index = nomsPartiCollection.size() - 1;
 		}
 		
@@ -322,12 +323,12 @@ public int getnumeroDePartiCollection(){
 	}
 	
 	/**
-	 * l’ajoutez à la collection de debuteCollection et retournez la 
-	 * position où il a été ajouté.
+	 * lâ€™ajoutez Ã  la collection de debuteCollection et retournez la 
+	 * position oÃ¹ il a Ã©tÃ© ajoutÃ©.
 	 * 
-	 * @param le nom du député, le numéro de circonscription et le numéro du parti
+	 * @param le nom du dÃ©putÃ©, le numÃ©ro de circonscription et le numÃ©ro du parti
 	 * 
-	 * @return position où il a été ajouté ou trouvé avec int index.
+	 * @return position oÃ¹ il a Ã©tÃ© ajoutÃ© ou trouvÃ© avec int index.
 	 * 
 	 * @author Daniel Colalillo
 	 * @since 10/27/2018
@@ -338,14 +339,14 @@ public int getnumeroDePartiCollection(){
 		
 		/*
 		 * strategie: 
-		 * vérifie si le Depute existe en utilisant la méthode 
+		 * vÃ©rifie si le Depute existe en utilisant la mÃ©thode 
 		 * .indexOf() puis s'il existe, retourne la position avec un index. 
-		 * toutefois, si elle n’existe pas, utilisez la méthode .add pour 
+		 * toutefois, si elle nâ€™existe pas, utilisez la mÃ©thode .add pour 
 		 * remplir la debute collection.
 		 * 
 		 */
 		
-		//cherche le nom entrée et l'insere dans un index
+		//cherche le nom entrÃ©e et l'insere dans un index
 		int index = deputeCollection.indexOf(nomDepute);
 		
 		//si le nom ne se trouve pas dans la liste, ajoutez-y
@@ -355,7 +356,7 @@ public int getnumeroDePartiCollection(){
 		
 			nomsDeputeCollection.add(nomDepute);
 			
-			//définir l'index de la nouvelle debute comme dernière place du tableau
+			//dÃ©finir l'index de la nouvelle debute comme derniÃ¨re place du tableau
 			index = deputeCollection.size() - 1;
 		}
 
@@ -441,6 +442,211 @@ public int getnumeroDePartiCollection(){
 		//return tabNomsDepute;		
 	}
 	
+	
+	/**
+	 * Retourne le nom de tous les dÃ©putÃ©s d'un parti en ordre croissant.
+     *
+	 * @param nomParti Le nom du parti cherchÃ©
+	 * @return Un tableau des noms des dÃ©putÃ©s de ce parti
+	 * 
+	 * @author Daniel Colalillo
+	 * @since 11/26/2018
+	 * @version 1.1.4
+	 */
+	public String[]  obtenirNomsDeputesParParti(String nomParti) {
+		
+		/*
+		 * Strategie:
+		 * utiliser des boucles pour vÃ©rifier s'il y a des donnÃ©es Ã  entrer 
+		 * dans un tableau puis le trier
+		 */
+		
+		//rÃ©cupÃ¨re le nom du parti dans la collection du parti
+		int numParti = nomsPartiCollection.indexOf(nomParti);
+		
+		List<String> depute = new ArrayList<String>();
+		
+		for(int i = 0; i < Constantes.NB_CATERGORIES_PARTI; i++){
+			
+			//ajouter Ã  la liste des dÃ©putÃ©s si le dÃ©putÃ© n'est pas vide
+			if(index[numParti][i] != Constantes.VIDE){
+				
+				depute.add(deputeCollection.get(index[numParti][i]).toString());
+			}
+		}
+		String [] deput = new String [depute.size()];
+		
+		//crÃ©ez ensuite un tableau, triez-le et renvoyez-le
+		deput = depute.toArray(deput);
+		
+		Arrays.sort(deput);
+		
+		return deput;
+	}
+	
+	
+	/**
+	 * Retourne le nom de tous les supporteurs d'un parti en ordre croissant.
+     *
+     *
+	 * @param nomParti Le nom du parti cherchÃ©
+	 * @return Un tableau des noms des supporteurs de ce parti
+	 * 
+	 * 
+	 * @author Daniel Colalillo
+	 * @since 11/26/2018
+	 * @version 1.3.8
+	 */
+	public String[]  obtenirNomsSupporteursParParti(String nomParti) {
+		
+		/*
+		 * Strategie:
+		 * VÃ©rifiez quelle partie l'utilisateur veut et lancez l'un 
+		 * des 3 programmes pour la gauche ou le centre
+		 */
+		
+		//convertir le nom du parti en son index
+		int numParti = nomsPartiCollection.indexOf(nomParti);
+		
+		String[] supporteurs;
+		
+		//VÃ©rifiez quelle partie l'utilisateur veut et lancez l'un 
+		//des 3 programmes pour la gauche ou le centre
+		if(partiCollection.get(numParti).getCategorie()
+				.equals("Parti de gauche") ){
+			
+			supporteurs = obtenirsupporteurs((PartiDeGauche) partiCollection.
+					get(numParti));
+		}
+		else if(partiCollection.get(numParti).getCategorie()
+				.equals("Parti du centre")){
+		   
+			supporteurs = obtenirsupporteurs((PartiDuCentre) partiCollection
+					.get(numParti));
+		}
+		else{
+			
+			supporteurs = obtenirsupporteurs((PartiDeDroite) partiCollection
+					.get(numParti));
+		} 
+		// trier le tableau des supporters
+		Arrays.sort(supporteurs);
+		
+		return supporteurs;
+	}
+	
+	/**
+	 * obtient les supporters et remplit un tableau avec eux
+     *
+     *
+	 * @param PartiDuCentre parti
+	 * @return obtenirsupporteurs
+	 * 
+	 * 
+	 * @author Daniel Colalillo
+	 * @since 11/27/2018
+	 * @version 1.2.1
+	 */
+	public String [] obtenirsupporteurs(PartiDuCentre parti){
+		
+		/*
+		 * Strategie:
+		 * remplir un tableau avec les supporters. tostring () est utilisÃ© pour 
+		 * ajouter du tableau partiel Ã  un tableau rÃ©gulier.
+		 * 
+		 */
+		
+		//dÃ©finir la longueur du tableau Ã  la longueur des tableaux parti
+		int max = parti.obtenirTabCirconscription().length;
+		
+		String [] supporteur = new String [max];
+		
+		//remplir un tableau avec les supporters de la circonscription.
+		Circonscription[] tableau = parti.obtenirTabCirconscription();
+		
+		//remplir le tout en convertissant tostring ()
+		for( int i = 0; i < max; i++){
+			
+			supporteur[i] = tableau[i].toString();
+		}
+		return supporteur;	
+	}
+	
+	
+	/**
+	 * obtient les supporters et remplit un tableau avec eux
+     *
+     *
+	 * @param PartiDeDroite parti
+	 * @return obtenirsupporteurs
+	 * 
+	 * 
+	 * @author Daniel Colalillo
+	 * @since 11/27/2018
+	 * @version 1.2.1
+	 */
+	public String [] obtenirsupporteurs(PartiDeDroite parti){
+		
+		/*
+		 * Strategie:
+		 * remplir un tableau avec les supporters. tostring () est utilisÃ© pour 
+		 * ajouter du tableau partiel Ã  un tableau rÃ©gulier.
+		 * 
+		 */
+		
+		//dÃ©finir la longueur du tableau Ã  la longueur des tableaux parti
+		int max = parti.obtenirTabDepute().length;
+		
+		String [] supporteur = new String [max];
+		
+		//remplir un tableau avec les supporters de la circonscription.
+		Depute[] tableau = parti.obtenirTabDepute();
+		
+		//remplir le tout en convertissant tostring ()
+		for( int i = 0; i < max; i++){
+			
+			supporteur[i] = tableau[i].toString();
+		}
+		return supporteur;		
+	}
+	
+	/**
+	 * obtient les supporters et remplit un tableau avec eux
+     *
+     *
+	 * @param PartiDeGauche parti
+	 * @return obtenirsupporteurs
+	 * 
+	 * 
+	 * @author Daniel Colalillo
+	 * @since 11/27/2018
+	 * @version 1.2.1
+	 */
+	public String [] obtenirsupporteurs(PartiDeGauche parti){
+		
+		/*
+		 * Strategie:
+		 * remplir un tableau avec les supporters. tostring () est utilisÃ© pour 
+		 * ajouter du tableau partiel Ã  un tableau rÃ©gulier.
+		 * 
+		 */
+		
+		//dÃ©finir la longueur du tableau Ã  la longueur des tableaux parti
+		int max = parti.obtenirTabOBNL().length;
+		
+		String [] supporteur = new String [max];
+		
+		//remplir un tableau avec les supporters de la circonscription.
+		String[] tableau = parti.obtenirTabOBNL();
+		
+		//remplir le tout en convertissant tostring ()
+		for( int i = 0; i < max; i++){
+			
+			supporteur[i] = tableau[i].toString();
+		}
+		return supporteur;		
+	}
+
 	/**
 	 * Retourne un tableau contenant le nom de tous les partis d'une 
 	 * circonscription en ordre croissant.

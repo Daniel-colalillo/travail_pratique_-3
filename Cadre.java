@@ -16,17 +16,20 @@ public class Cadre extends JFrame implements Runnable
 		this.election = election;
 	}
 	
-	
-	//@Override
 	public void run() 
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
-
-		add(new PanneauHaut(election),BorderLayout.NORTH);
-		//add(new PanneauBas(election), BorderLayout.SOUTH);
+    
+    add(new PanneauHaut(election),BorderLayout.NORTH);
+    
+		//h�rite par composition
+		PanneauBas panneau = new PanneauBas(election);
+	
+		add(panneau.getPanneau() , BorderLayout.SOUTH);
 		
 		setVisible(true);
 	}
+	
 }
