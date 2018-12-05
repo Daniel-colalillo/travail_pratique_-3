@@ -6,7 +6,6 @@ import javax.swing.JFrame;
 
 public class Cadre extends JFrame implements Runnable
 {
-	
 	Election election;
 	
 	
@@ -17,15 +16,15 @@ public class Cadre extends JFrame implements Runnable
 		this.election = election;
 	}
 	
-	
-	
 	public void run() 
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
-		
-		//hérite par composition
+    
+    add(new PanneauHaut(election),BorderLayout.NORTH);
+    
+		//hï¿½rite par composition
 		PanneauBas panneau = new PanneauBas(election);
 	
 		add(panneau.getPanneau() , BorderLayout.SOUTH);

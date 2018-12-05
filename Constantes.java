@@ -27,7 +27,6 @@ public class Constantes {
 	public static final int NB_DEPUTE_MAX = 939;
 
 	public static final int FENETRE_LONGEUR = 300;
-
 	public static final int FENETRE_HAUTEUR = 300;
    
 }
