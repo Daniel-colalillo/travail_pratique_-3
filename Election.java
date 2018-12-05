@@ -686,6 +686,10 @@ public int getnumeroDePartiCollection(){
 	 * @return Le nom des deputes de cette circonscription dans le meme ordre 
 	 * 		   que leur parti d'attache, dans le tableau lesPartis donne en
 	 * 		   parametre.
+	 * 
+	 * @author jason pang
+	 * @since 11/30/2018
+	 * @version 1.0.3
 	 */
 	public String[] obtenirNomsDeputesParCirconscription(String nom, String[] lesPartis)
 	{
