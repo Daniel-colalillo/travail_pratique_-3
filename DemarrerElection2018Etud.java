@@ -59,64 +59,11 @@ public class DemarrerElection2018Etud {
 		// genere les supporteurs
 		ModuleFichier.genererSupporteurs(election);
 		
-		
-		/*
-		 * 
-		 * 	MENU
-		 * 
-		 */
-		
-		//******************************
+		//menu
 		
 		Thread t = new Thread(new Cadre("Election", election));
 		t.start();
-		
-		//******************************
-		
-		
-		//REMOVE THIS AFTER GUI IS COMPLETE
-		
-		/*
-		List<String> choix = new ArrayList<String>();
-			
-		String [] tabChoix = new String [election.partiCollection.size()];
-		
-		// rempli choix avec parti collection
-		for(int i = 0; i < election.partiCollection.size(); i++){
-			
-			choix.add(election.partiCollection.get(i).toString());
-		}
-		
-		choix.toArray(tabChoix);
-	
-		while(true){
-			
-			// menu pour choisir quelle parti a voir
-			String input = (String) JOptionPane.showInputDialog(null, 
-						"choisi parti", "choisi parti", 
-			        	JOptionPane.QUESTION_MESSAGE, null, 
-			        	tabChoix, // tableau de choix
-			        	tabChoix[0]); // choix initial
-		
-			// index du choix
-			int index = choix.indexOf(input);
-		  
-			if(election.partiCollection.get(index).getCategorie()
-					.equals("Parti de gauche") ){
-			   
-				obtenirSup((PartiDeGauche)election.partiCollection.get(index));
-			}
-			
-			else if(election.partiCollection.get(index).getCategorie()
-					.equals("Parti du centre")){
-			   
-				obtenirSup((PartiDuCentre)election.partiCollection.get(index));
-			}
-			
-			else obtenirSup((PartiDeDroite)election.partiCollection.get(index));
-		
-		}*/
-	
+
 	}
 	
 	/**
