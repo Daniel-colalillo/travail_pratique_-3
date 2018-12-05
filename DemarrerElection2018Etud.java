@@ -59,6 +59,22 @@ public class DemarrerElection2018Etud {
 		// genere les supporteurs
 		ModuleFichier.genererSupporteurs(election);
 		
+		
+		/*
+		 * 
+		 * 	MENU
+		 * 
+		 */
+		
+		//******************************
+		
+		Thread t = new Thread(new Cadre("Election", election));
+		t.start();
+		
+//******************************
+		
+		/*
+		
 		List<String> choix = new ArrayList<String>();
 			
 		String [] tabChoix = new String [election.partiCollection.size()];
@@ -98,7 +114,7 @@ public class DemarrerElection2018Etud {
 			else obtenirSup((PartiDeDroite)election.partiCollection.get(index));
 		
 	}
-	
+	*/
 }
 	
 	/**
