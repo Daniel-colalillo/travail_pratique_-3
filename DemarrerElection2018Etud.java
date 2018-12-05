@@ -68,14 +68,15 @@ public class DemarrerElection2018Etud {
 		
 		//******************************
 		
-		//Thread t = new Thread(new Cadre("Election", election));
-		//t.start();
+		Thread t = new Thread(new Cadre("Election", election));
+		t.start();
 		
 		//******************************
 		
 		
 		//REMOVE THIS AFTER GUI IS COMPLETE
 		
+		/*
 		List<String> choix = new ArrayList<String>();
 			
 		String [] tabChoix = new String [election.partiCollection.size()];
@@ -114,7 +115,7 @@ public class DemarrerElection2018Etud {
 			
 			else obtenirSup((PartiDeDroite)election.partiCollection.get(index));
 		
-		}
+		}*/
 	
 	}
 	

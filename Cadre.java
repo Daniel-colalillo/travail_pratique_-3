@@ -19,7 +19,7 @@ public class Cadre extends JFrame implements Runnable
 	}
 	
 	
-	@Override
+	//@Override
 	public void run() 
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -28,7 +28,7 @@ public class Cadre extends JFrame implements Runnable
 		
 		
 		/* HOW TO PASS ELECTION? (RELATE 1) */
-		setContentPane(new PanneauHaut(election));
+		//setContentPane(new PanneauHaut(election));
 		
 		/* ^^^?REPLACE?^^^ */
 		add(new PanneauHaut(election),BorderLayout.NORTH);
