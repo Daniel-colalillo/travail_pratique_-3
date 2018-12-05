@@ -440,6 +440,66 @@ public int getnumeroDePartiCollection(){
 			
 		//return tabNomsDepute;		
 	}
+	
+	/**
+	 * Retourne un tableau contenant le nom de tous les partis d'une 
+	 * circonscription en ordre croissant.
+	 * 
+	 * @param nom Le nom de la circonscription cherchee
+	 * @return Un tableau de noms des partis de la circonscription
+	 */
+	public String[] obtenirNomsPartisParCirconscription(String nom)
+	{
+		int noCirc = nomsCirconscriptionCollection.indexOf(nom);
+		
+		List<String> lesPartis = new ArrayList<String>();
+		
+		for(int i = 0; i < nomsPartiCollection.size(); i++)
+		{
+			if(index[noCirc][i] != Constantes.VIDE)
+			{
+				lesPartis.add(nomsPartiCollection.get(i));
+			}
+		}
+		
+		String [] tabNomDesPartis = new String[lesPartis.size()];
+		tabNomDesPartis = lesPartis.toArray(tabNomDesPartis);
+		
+		return tabNomDesPartis;
+	}
+	
+	/**
+	 * Retourne un tableau avec les noms des deputes pour une circonscription
+	 * donnee. Le tableau retourne doit contenir les noms des deputes dans le 
+	 * meme ordre que leur parti d'attache, dans le tableau lesPartis donne en
+	 * parametre.
+	 * 
+	 * @param nom Le nom de la circonscription cherchee
+	 * @param lesPartis Un tableau contenant le nom de tous les partis de la
+	 * 					circonscription cherchee, en ordre croissant.
+	 * @return Le nom des deputes de cette circonscription dans le meme ordre 
+	 * 		   que leur parti d'attache, dans le tableau lesPartis donne en
+	 * 		   parametre.
+	 */
+	public String[] obtenirNomsDeputesParCirconscription(String nom, String[] lesPartis)
+	{
+		String[] tabNomDesDeputes = new String[lesPartis.length];
+		
+		int noCirc = nomsCirconscriptionCollection.indexOf(nom);
+		
+		for(int i = 0; i < lesPartis.length; i++)
+		{
+			int noParti = nomsPartiCollection.indexOf(lesPartis[i]);
+			
+			int noDepute = index[noCirc][noParti];
+			
+			tabNomDesDeputes[i] = deputeCollection.get(noDepute).getDepute();
+		}
+		
+		return tabNomDesDeputes;
+		
+		
+	}
 }
 
 
