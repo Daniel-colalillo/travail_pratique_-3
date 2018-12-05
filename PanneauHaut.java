@@ -135,7 +135,9 @@ public class PanneauHaut extends JPanel
 		add(panDepute, BorderLayout.EAST);
 	}
 	/**
-	 * 
+	 * Classe privee qui herite Jpanel. Il est utiliser comme
+	 * sous-panneau pour PanneauHaut. Ce panneau contient une etiquette,
+	 * une liste et un scroller pour la liste.
 	 * 
 	 * @author jason pang
 	 * @since 12/04/2018

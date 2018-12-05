@@ -59,11 +59,12 @@ public class DemarrerElection2018Etud {
 		// genere les supporteurs
 		ModuleFichier.genererSupporteurs(election);
 		
-    //menu
+		//menu
 		
 		Thread t = new Thread(new Cadre("Election", election));
 		t.start();
-		
+
+	}
 	
 	/**
 	 * afficher les supporters obnl
