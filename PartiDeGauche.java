@@ -58,10 +58,7 @@ public class PartiDeGauche extends Parti
 	 */
 	public void ajouterOBNL(String nomOBNL)
 	{
-		if(this.listOBNL.indexOf(nomOBNL) == Constantes.VIDE)
-		{
 			this.listOBNL.add(nomOBNL);
-		}
 	}
 	
 	/**

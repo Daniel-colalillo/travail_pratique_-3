@@ -471,7 +471,7 @@ public int getnumeroDePartiCollection(){
 			//ajouter à la liste des députés si le député n'est pas vide
 			if(index[numParti][i] != Constantes.VIDE){
 				
-				depute.add(deputeCollection.get(index[numParti][i]).toString());
+				depute.add(deputeCollection.get(index[numParti][i]).getDepute());
 			}
 		}
 		String [] deput = new String [depute.size()];
@@ -567,7 +567,7 @@ public int getnumeroDePartiCollection(){
 		//remplir le tout en convertissant tostring ()
 		for( int i = 0; i < max; i++){
 			
-			supporteur[i] = tableau[i].toString();
+			supporteur[i] = tableau[i].getNomCirconscription();
 		}
 		return supporteur;	
 	}
@@ -605,7 +605,7 @@ public int getnumeroDePartiCollection(){
 		//remplir le tout en convertissant tostring ()
 		for( int i = 0; i < max; i++){
 			
-			supporteur[i] = tableau[i].toString();
+			supporteur[i] = tableau[i].getDepute();
 		}
 		return supporteur;		
 	}

@@ -18,6 +18,8 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 public class PanneauBas{
 	
 	private JPanel jpanel = new JPanel();
@@ -26,6 +28,12 @@ public class PanneauBas{
 	private MonJPanel panPartis;
 	private MonJPanel panDeputes;
 	private MonJPanel panSupporteurs;
+	
+	/* Variables de l'election */
+	private String nomParti;
+	private String [] tabNomsDepute;
+	private String [] tabNomSupporteurs;
+	private String [] tabNomParti;
 	
 	private Election election;
 	
@@ -70,17 +78,23 @@ public class PanneauBas{
 		
 		//obtenire le nom du premiere parti
 			
-		String nomParti = election.nomsPartiCollection.get(0);
+		nomParti = election.nomsPartiCollection.get(0);
 		
 		//obtenir les depute du parti
-		String [] tabNomsDepute = election.obtenirNomsDeputesParParti(nomParti);
+		tabNomsDepute = election.obtenirNomsDeputesParParti(nomParti);
 		
 		//obtenir les supporteurs des deputes
-		String [] tabNomSupporteurs = 
+		tabNomSupporteurs = 
 				election.obtenirNomsSupporteursParParti(nomParti);
 				
-		//obtenirs les noms des partis
-		String [] tabNomParti = election.obtenirNomsParti();
+		//obtenirs les noms des partis avec leur categorie
+		//tabNomParti = election.obtenirNomsParti();
+		tabNomParti = new String[election.partiCollection.size()];
+		for (int i = 0; i < election.partiCollection.size(); i++)
+		{
+			tabNomParti[i] = election.partiCollection.get(i).getParti()
+					+" ( "+ election.partiCollection.get(i).getCategorie()+" )";
+		}
 		
 		/*
 		 * Initialiser les sous panneaux avec leur etiquette et l'information
@@ -101,7 +115,10 @@ public class PanneauBas{
 		
 		panSupporteurs.ajouterComponsants();
 		
-				addPanneau();
+		addPanneau();
+		
+		//ECOUTEUR
+		panPartis.listNoms.addListSelectionListener(new MonEcouteur());
 	}
 	
 	/**
@@ -139,7 +156,9 @@ public class PanneauBas{
 	}
 	
 	/**
-	 * 
+	 * Classe privee qui herite Jpanel. Il est utiliser comme
+	 * sous-panneau pour PanneauHaut. Ce panneau contient une etiquette,
+	 * une liste et un scroller pour la liste.
 	 * 
 	 * @author jason pang
 	 * @since 12/04/2018
@@ -215,24 +234,64 @@ public class PanneauBas{
 			
 			add(listScroller, BorderLayout.SOUTH);
 		}
-		
+	}
+	
+	/**
+	 * Classe interne pour definir l'ecouteur pour liste des partis.
+	 * 
+	 * @author jason pang
+	 * @since 12/05/2018
+	 * @version 1.0.0
+	 */
+	public class MonEcouteur implements ListSelectionListener
+	{	
 		/**
-		 * changer les informations qui apparaîtront sur la liste.
-		 * 
-		 * @param data L'information qui sera afficher
+		 * Changer les elements dans les listes 
 		 * 
 		 * @author jason pang
-		 * @since 12/04/2018
+		 * @since 12/05/2018
 		 * @version 1.0.0
 		 */
-		public void setInformation(String[] data)
+		public void valueChanged(ListSelectionEvent e)
 		{
 			/*
 			 * Strategie:
-			 * Utiliser la methode setListData de JList
+			 * Obtenir l'information lier a l'index choisi et remplir
+			 * les listes avec les nouveaux informations. Verifier la 
+			 * catergorie du parti chois, si c'est une parti de gauche,
+			 * afficher la nombre de supporteur.
 			 */
-			this.listNoms.setListData(data);
+			
+			JList list = (JList)e.getSource();
+			
+			// obtenir l'index de ce qui a été choisi
+			int index = list.getSelectedIndex();
+			
+			// Obtenir l'information du parti choisi
+			Parti parti = election.partiCollection.get(index);
+			nomParti = parti.getParti();
+			
+			//obtenir les depute du parti
+			tabNomsDepute = election.obtenirNomsDeputesParParti(nomParti);
+			
+			// Si la parti est une parti de gauche, afficher la nombre 
+			// de supportteur.
+			if(parti.getCategorie().equals("Parti de gauche"))
+			{
+				int nombreSupp = election.obtenirNomsSupporteursParParti(nomParti).length;
+				String[] supp = {"Nombre de supporteur OBNL " + nombreSupp};
+				tabNomSupporteurs = supp;
+			}
+			else
+			{
+				//obtenir les supporteurs des deputes
+				tabNomSupporteurs = 
+						election.obtenirNomsSupporteursParParti(nomParti);
+			}
+			
+			//Changer les elements que les JLists contiennentt
+			panDeputes.listNoms.setListData(tabNomsDepute);
+			panSupporteurs.listNoms.setListData(tabNomSupporteurs);
 		}
 	}
-	
 }

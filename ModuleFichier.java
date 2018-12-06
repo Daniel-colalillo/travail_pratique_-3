@@ -370,12 +370,13 @@ public class ModuleFichier {
 			 */
 		   
 		   // nombre de chaine vide a ajouter a la collection OBNL
-		   int nombreChaineVide= UtilitaireMath.alea(1,Constantes.NB_OBNL_MAX);
+		   int nombreChaineVide= 
+				   UtilitaireMath.alea(1,Constantes.NB_SUPPORTEUR_MAX);
 		   
 		   // ajouter des chaines vide a obnl
 		   for(int i = 0; i < nombreChaineVide; i++){
-		   
-		   parti.ajouterOBNL("");
+			   
+			   parti.ajouterOBNL(" ");
 		   
 		   }
 	   }
@@ -404,7 +405,7 @@ public class ModuleFichier {
 			 */
 		   
 		   // générer un nombre aléatoire de supporteurs
-		   int max= UtilitaireMath.alea(1, Constantes.NB_CIRCONSCRIPTIONS_MAX);
+		   int max= UtilitaireMath.alea(1, Constantes.NB_SUPPORTEUR_MAX);
 			   
 		   Circonscription circTemporaire;
 			    
@@ -456,7 +457,7 @@ public class ModuleFichier {
 			 * 
 			 */
 		   
-		   int nombreDepute = UtilitaireMath.alea(1, Constantes.NB_DEPUTE);
+		   int nombreDepute = UtilitaireMath.alea(1, Constantes.NB_SUPPORTEUR_MAX);
 		   
 		   Depute depuTemporaire;
 				   
