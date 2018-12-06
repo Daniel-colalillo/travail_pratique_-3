@@ -466,12 +466,12 @@ public int getnumeroDePartiCollection(){
 		
 		List<String> depute = new ArrayList<String>();
 		
-		for(int i = 0; i < Constantes.NB_CATERGORIES_PARTI; i++){
+		for(int i = 0; i < Constantes.NB_CIRCONSCRIPTIONS_MAX; i++){
 			
 			//ajouter à la liste des députés si le député n'est pas vide
-			if(index[numParti][i] != Constantes.VIDE){
+			if(index[i][numParti] != Constantes.VIDE){
 				
-				depute.add(deputeCollection.get(index[numParti][i]).getDepute());
+				depute.add(deputeCollection.get(index[i][numParti]).getDepute());
 			}
 		}
 		String [] deput = new String [depute.size()];

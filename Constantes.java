@@ -23,9 +23,9 @@ public class Constantes {
 	
 	//public static final int NB_OBNL_MAX = 25;
 	public static final int NB_SUPPORTEUR_MAX = 10;
-	public static final int NB_CIRCONSCRIPTIONS_MAX = 125;
+	public static final int NB_CIRCONSCRIPTIONS_MAX = 125-1;
 	//public static final int NB_DEPUTE = 10;
-	public static final int NB_DEPUTE_MAX = 939;
+	public static final int NB_DEPUTE_MAX = 940-1;
 
 	public static final int FENETRE_LONGEUR = 300;
 	public static final int FENETRE_HAUTEUR = 300;
