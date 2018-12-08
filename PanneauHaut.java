@@ -88,14 +88,19 @@ public class PanneauHaut extends JPanel
 		 */
 		
 		// Obtenir nom du premiere circonscription
-		nomCirc = election.nomsCirconscriptionCollection.get(0);
+		//nomCirc = election.nomsCirconscriptionCollection.get(0);
 		// Obtenir les partis dans le premiere circonscription
-		tabNomsPartis= election.obtenirNomsPartisParCirconscription(nomCirc);
+		//tabNomsPartis= election.obtenirNomsPartisParCirconscription(nomCirc);
 		// Obtenir les deputes des partis
-		tabNomsDeputes = election.obtenirNomsDeputesParCirconscription
-						 (nomCirc, tabNomsPartis);
+		//tabNomsDeputes = election.obtenirNomsDeputesParCirconscription
+		//				 (nomCirc, tabNomsPartis);
 		// Obtenir les noms de toutes les circonscriptions
-		tabNomsCirconscription = election.obtenirNomsCirconscription();
+		//tabNomsCirconscription = election.obtenirNomsCirconscription();
+		
+		nomCirc = " ";
+		tabNomsCirconscription = null;
+		tabNomsPartis= null;
+		tabNomsDeputes = null;
 		
 		/*
 		 * Initialiser les sous panneaux avec leur etiquette et l'information

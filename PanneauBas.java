@@ -71,16 +71,19 @@ public class PanneauBas{
 		//obtenire le nom du premiere parti
 			
 		String nomParti = election.nomsPartiCollection.get(0);
+		//String nomParti = " ";
 		
 		//obtenir les depute du parti
 		String [] tabNomsDepute = election.obtenirNomsDeputesParParti(nomParti);
+		//String [] tabNomsDepute = null;
 		
 		//obtenir les supporteurs des deputes
-		String [] tabNomSupporteurs = 
+		String [] tabNomSupporteurs =
 				election.obtenirNomsSupporteursParParti(nomParti);
 				
 		//obtenirs les noms des partis
 		String [] tabNomParti = election.obtenirNomsParti();
+		//String [] tabNomParti = null;
 		
 		/*
 		 * Initialiser les sous panneaux avec leur etiquette et l'information
