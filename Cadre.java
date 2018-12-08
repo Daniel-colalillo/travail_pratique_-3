@@ -7,16 +7,23 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+
+import javax.swing.JMenuBar;
+
 public class Cadre extends JFrame implements Runnable
 {
-	public static Election election = new Election(Constantes.ANNEE_ELECTION);
+	private Election election;
+	private PanneauHaut panneau1;
+	private PanneauBas panneau2;
 	
 	
 	public Cadre(String titre) 
 	{
 		super(titre);
+		
+		panneau1 = new PanneauHaut(election);
 
-		//this.election = election;
+		panneau2 = new PanneauBas(election);
 	}
 	
 	public void run() 
@@ -30,36 +37,31 @@ public class Cadre extends JFrame implements Runnable
 		
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		
-		//frame.setJMenuBar(MenuFichier.creMenuBar());
+		add(new MenuFichier(this), BorderLayout.PAGE_START);
 		
-		JMenuBar  menuBar = new JMenuBar();
-		JMenu menu = new JMenu("Menu");		
-		        
-        JMenuItem newMenuItem = new JMenuItem("New");
+		add(panneau1);
 		
-		//menuItem.addActionListener(new MenuEcouteur());
-		menuBar.add(menu);
-		
-		//setJMenuBar(menuBar);
-		add(menuBar);
-		menu.add(newMenuItem);
-
-	    super.setJMenuBar(menuBar);
-		//setJMenuBar(menuBar);
-    
-		//add(new PanneauHaut(election),BorderLayout.NORTH);
-    
-		//herite par composition
-		//PanneauBas panneau = new PanneauBas(election);
-	
-		//add(panneau.getPanneau() , BorderLayout.SOUTH);
-        super.pack();
-
-		super.setVisible(true);
+		add(panneau2.getPanneau(),BorderLayout.PAGE_END);
+				
+		setVisible(true);
 	}
 	
-	public static void setElection(Election electionDonner){
+	public void setElection(Election election)
+	{
+		this.election = election;
 		
-		election = electionDonner;
+		remove(panneau1);
+		remove(panneau2.getPanneau());
+		revalidate();
+		
+		panneau1 = new PanneauHaut(election);
+		add(panneau1);
+		revalidate();
+		
+		panneau2 = new PanneauBas(election);
+		add(panneau2.getPanneau(),BorderLayout.PAGE_END);
+		revalidate();
+		
+			
 	}
 }
