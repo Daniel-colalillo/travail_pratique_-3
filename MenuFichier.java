@@ -28,8 +28,7 @@ public class MenuFichier extends JMenuBar
 		//Creer le menubar
 		super();
 		this.cadre = cadre;
-		//menuBar = new JMenuBar();
-		//menuBar.setPreferredSize(new Dimension(,15));
+
 		//menu
 		menu = new JMenu("Fichier");
 		add(menu);
