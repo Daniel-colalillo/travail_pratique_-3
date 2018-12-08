@@ -17,9 +17,12 @@ import java.util.List;
 public class DemarrerElection2018Etud {
 
 	public static void main(String[] args) {
-		
+
 		preparerPourMac();
 		
+		//menu
+		
+
 		Thread t = new Thread(new Cadre("Election"));
 		t.start();
 

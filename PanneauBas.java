@@ -144,7 +144,7 @@ public class PanneauBas{
 	}
 	
 	/**
-	 * utilisé pour obtenir jpanel travailler à l'intérieur de carde
+	 * utilisï¿½ pour obtenir jpanel travailler ï¿½ l'intï¿½rieur de carde
 	 * 
 	 * @author Daniel Colalillo
 	 * @since 12/04/2018
@@ -265,7 +265,7 @@ public class PanneauBas{
 			
 			JList list = (JList)e.getSource();
 			
-			// obtenir l'index de ce qui a été choisi
+			// obtenir l'index de ce qui a ï¿½tï¿½ choisi
 			int index = list.getSelectedIndex();
 			
 			// Obtenir l'information du parti choisi

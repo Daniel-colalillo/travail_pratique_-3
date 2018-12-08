@@ -10,6 +10,11 @@
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+
+
 import javax.swing.JMenuBar;
 
 public class Cadre extends JFrame implements Runnable
@@ -35,11 +40,17 @@ public class Cadre extends JFrame implements Runnable
 		
 		// Instancier les panneaux
 		panneau1 = new PanneauHaut(election);
+
 		panneau2 = new PanneauBas(election);
 	}
 	
 	public void run() 
 	{
+		
+		if (System.getProperty("os.name").contains("Mac")) {
+			  System.setProperty("apple.laf.useScreenMenuBar", "true");
+			}
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -94,5 +105,4 @@ public class Cadre extends JFrame implements Runnable
 		
 			
 	}
-	
 }
