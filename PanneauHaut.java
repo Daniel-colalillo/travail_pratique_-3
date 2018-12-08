@@ -9,12 +9,12 @@
  */
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Dimension;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
@@ -87,16 +87,27 @@ public class PanneauHaut extends JPanel
 		 * devrai etre afficher dans le JList. Ajouter les sous-panneaux au
 		 * PanneauHaut.
 		 */
-		
+		try{
 		// Obtenir nom du premiere circonscription
 		nomCirc = election.nomsCirconscriptionCollection.get(0);
 		// Obtenir les partis dans le premiere circonscription
-		tabNomsPartis= election.obtenirNomsPartisParCirconscription(nomCirc);
+		tabNomsPartis = election.obtenirNomsPartisParCirconscription(nomCirc);
 		// Obtenir les deputes des partis
 		tabNomsDeputes = election.obtenirNomsDeputesParCirconscription
 						 (nomCirc, tabNomsPartis);
 		// Obtenir les noms de toutes les circonscriptions
 		tabNomsCirconscription = election.obtenirNomsCirconscription();
+		} catch(NullPointerException e)
+		{
+			tabNomsPartis = new String[1];
+			tabNomsPartis[0] = "";
+			
+			tabNomsDeputes = new String[1];
+			tabNomsDeputes[0] = "";
+			
+			tabNomsCirconscription = new String[1];
+			tabNomsCirconscription[0] = "";
+		}
 		
 		initPanneau();
 		
@@ -164,6 +175,9 @@ public class PanneauHaut extends JPanel
 		private JList listNoms;
 		private JScrollPane listScroller;
 		
+		private String titre;
+		private String[] data;
+		
 		/**
 		 * Constructeur pour le JPanel. Initialise les composants du sous-panneau.
 		 * 
@@ -184,7 +198,14 @@ public class PanneauHaut extends JPanel
 			 * la liste.
 			 */
 			super(new BorderLayout());
+			this.titre = titre;
+			this.data = data;
 			
+			initComposants();
+		}
+		
+		private void initComposants()
+		{
 			//init etiquette
 			etiquette = new JLabel(titre);
 			
@@ -215,7 +236,7 @@ public class PanneauHaut extends JPanel
 			 * Strategie:
 			 * Ajouter l'etiquette au nord et la list au sud du sous-panneau.
 			 */
-			add(etiquette, BorderLayout.NORTH);
+			add(etiquette);
 			add(listScroller, BorderLayout.SOUTH);
 		}
 	}

@@ -31,9 +31,9 @@ public class PanneauBas{
 	
 	/* Variables de l'election */
 	private String nomParti;
-	private String [] tabNomsDepute;
-	private String [] tabNomSupporteurs;
-	private String [] tabNomParti;
+	private String [] tabNomsDepute = {""};
+	private String [] tabNomSupporteurs = {""};
+	private String [] tabNomParti = {""};
 	
 	private Election election;
 	
@@ -75,9 +75,9 @@ public class PanneauBas{
 		 * devrai etre afficher dans le JList. Ajouter les sous-panneaux au
 		 * PanneauBas.
 		 */
-		
+		try{
 		//obtenire le nom du premiere parti
-			
+		
 		nomParti = election.nomsPartiCollection.get(0);
 		
 		//obtenir les depute du parti
@@ -95,6 +95,7 @@ public class PanneauBas{
 			tabNomParti[i] = election.partiCollection.get(i).getParti()
 					+" ( "+ election.partiCollection.get(i).getCategorie()+" )";
 		}
+		}catch(NullPointerException e){}
 		
 		/*
 		 * Initialiser les sous panneaux avec leur etiquette et l'information
