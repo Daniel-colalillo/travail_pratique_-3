@@ -9,15 +9,16 @@
  */
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JList;
 import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 public class PanneauHaut extends JPanel 
 {
@@ -86,17 +87,37 @@ public class PanneauHaut extends JPanel
 		 * devrai etre afficher dans le JList. Ajouter les sous-panneaux au
 		 * PanneauHaut.
 		 */
-		
+		try{
 		// Obtenir nom du premiere circonscription
 		nomCirc = election.nomsCirconscriptionCollection.get(0);
 		// Obtenir les partis dans le premiere circonscription
-		tabNomsPartis= election.obtenirNomsPartisParCirconscription(nomCirc);
+		tabNomsPartis = election.obtenirNomsPartisParCirconscription(nomCirc);
 		// Obtenir les deputes des partis
 		tabNomsDeputes = election.obtenirNomsDeputesParCirconscription
 						 (nomCirc, tabNomsPartis);
 		// Obtenir les noms de toutes les circonscriptions
 		tabNomsCirconscription = election.obtenirNomsCirconscription();
+		} catch(NullPointerException e)
+		{
+			tabNomsPartis = new String[1];
+			tabNomsPartis[0] = "";
+			
+			tabNomsDeputes = new String[1];
+			tabNomsDeputes[0] = "";
+			
+			tabNomsCirconscription = new String[1];
+			tabNomsCirconscription[0] = "";
+		}
 		
+		initPanneau();
+		
+		addPanneau();
+		
+		addEcouteur();
+	}	
+	
+	private void initPanneau()
+	{
 		/*
 		 * Initialiser les sous panneaux avec leur etiquette et l'information
 		 * pour afficher sur les listes.
@@ -111,9 +132,7 @@ public class PanneauHaut extends JPanel
 		panCirc.ajouterComponsants();
 		panParti.ajouterComponsants();
 		panDepute.ajouterComponsants();
-		
-		addPanneau();
-	}	
+	}
 	
 	/**
 	 * Ajouter les sous-panneau au panneau haut
@@ -134,6 +153,12 @@ public class PanneauHaut extends JPanel
 		add(panParti, BorderLayout.CENTER);
 		add(panDepute, BorderLayout.EAST);
 	}
+	
+	private void addEcouteur()
+	{
+		panCirc.listNoms.addListSelectionListener(new MonEcouteur());
+	}
+	
 	/**
 	 * Classe privee qui herite Jpanel. Il est utiliser comme
 	 * sous-panneau pour PanneauHaut. Ce panneau contient une etiquette,
@@ -149,6 +174,9 @@ public class PanneauHaut extends JPanel
 		private JLabel etiquette;
 		private JList listNoms;
 		private JScrollPane listScroller;
+		
+		private String titre;
+		private String[] data;
 		
 		/**
 		 * Constructeur pour le JPanel. Initialise les composants du sous-panneau.
@@ -170,17 +198,24 @@ public class PanneauHaut extends JPanel
 			 * la liste.
 			 */
 			super(new BorderLayout());
+			this.titre = titre;
+			this.data = data;
 			
-			//etiquette
+			initComposants();
+		}
+		
+		private void initComposants()
+		{
+			//init etiquette
 			etiquette = new JLabel(titre);
 			
-			//liste
+			//init liste
 			listNoms = new JList(data);
 			listNoms.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			listNoms.setLayoutOrientation(JList.VERTICAL);
 			listNoms.setVisibleRowCount(-1);
 		
-			//scroller
+			//init scroller
 			listScroller = new JScrollPane(listNoms);
 			listScroller.setPreferredSize(new Dimension(
 											Constantes.FENETRE_LONGEUR, 
@@ -201,26 +236,51 @@ public class PanneauHaut extends JPanel
 			 * Strategie:
 			 * Ajouter l'etiquette au nord et la list au sud du sous-panneau.
 			 */
-			add(etiquette, BorderLayout.NORTH);
+			add(etiquette);
 			add(listScroller, BorderLayout.SOUTH);
 		}
-		
+	}
+	
+	/**
+	 * Classe interne pour definir l'ecouteur pour liste de circonscription.
+	 * 
+	 * @author jason pang
+	 * @since 12/05/2018
+	 * @version 1.0.0
+	 */
+	public class MonEcouteur implements ListSelectionListener
+	{	
 		/**
-		 * changer les informations qui apparaîtront sur la liste.
-		 * 
-		 * @param data L'information qui sera afficher
+		 * Changer les elements dans les listes 
 		 * 
 		 * @author jason pang
-		 * @since 12/04/2018
+		 * @since 12/05/2018
 		 * @version 1.0.0
 		 */
-		public void setInformation(String[] data)
+		public void valueChanged(ListSelectionEvent e)
 		{
 			/*
 			 * Strategie:
-			 * Utiliser la methode setListData de JList
+			 * Obtenir l'information lier a l'index choisi et remplir
+			 * les listes avec les nouveaux informations.
 			 */
-			this.listNoms.setListData(data);
+			
+			JList list = (JList)e.getSource();
+			
+			// Obtenir l'index de ce qui a ete choisi
+			int index = list.getSelectedIndex();
+			
+			// Obtenir le nom de la circonscription choisi
+			nomCirc = election.nomsCirconscriptionCollection.get(index);
+			// Obtenir les partis dans le premiere circonscription
+			tabNomsPartis= election.obtenirNomsPartisParCirconscription(nomCirc);
+			// Obtenir les deputes des partis
+			tabNomsDeputes = election.obtenirNomsDeputesParCirconscription
+							 (nomCirc, tabNomsPartis);
+			
+			// Changer les elements que les JLists contiennent
+			panParti.listNoms.setListData(tabNomsPartis);
+			panDepute.listNoms.setListData(tabNomsDeputes);
 		}
 	}
 	
