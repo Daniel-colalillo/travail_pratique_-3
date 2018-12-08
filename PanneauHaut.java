@@ -9,7 +9,6 @@
  */
 
 import java.awt.BorderLayout;
-import java.awt.CardLayout;
 import java.awt.Dimension;
 
 import javax.swing.JLabel;
@@ -85,7 +84,7 @@ public class PanneauHaut extends JPanel
 		 * Utiliser les methodes le l'election pour retenir des information.
 		 * Initialiser les JPanel avec leur etiquette et l'information qui
 		 * devrai etre afficher dans le JList. Ajouter les sous-panneaux au
-		 * PanneauHaut.
+		 * PanneauHaut. Utilise un try catch pour la premiere parcour du code.
 		 */
 		try{
 		// Obtenir nom du premiere circonscription
@@ -98,7 +97,8 @@ public class PanneauHaut extends JPanel
 		// Obtenir les noms de toutes les circonscriptions
 		tabNomsCirconscription = election.obtenirNomsCirconscription();
 		} catch(NullPointerException e)
-		{
+		{	
+			// initialise les information vide 
 			tabNomsPartis = new String[1];
 			tabNomsPartis[0] = "";
 			
@@ -115,7 +115,13 @@ public class PanneauHaut extends JPanel
 		
 		addEcouteur();
 	}	
-	
+	/**
+	 * Initialise les trois sous-panneau
+	 * 
+	 * @author jason pang
+	 * @since 12/05/2018
+	 * @version 1.0.0
+	 */
 	private void initPanneau()
 	{
 		/*
@@ -154,6 +160,13 @@ public class PanneauHaut extends JPanel
 		add(panDepute, BorderLayout.EAST);
 	}
 	
+	/**
+	 * Ajouter l'ecouteur au panneau
+	 * 
+	 * @author jason pang
+	 * @since 12/05/2018
+	 * version 1.0.0
+	 */
 	private void addEcouteur()
 	{
 		panCirc.listNoms.addListSelectionListener(new MonEcouteur());
@@ -204,6 +217,13 @@ public class PanneauHaut extends JPanel
 			initComposants();
 		}
 		
+		/**
+		 * Initialise l'etiquette, liste et scroller du panneau
+		 * 
+		 * @author jason pang
+		 * @since 12/05/2018
+		 * @version 1.0.0
+		 */
 		private void initComposants()
 		{
 			//init etiquette

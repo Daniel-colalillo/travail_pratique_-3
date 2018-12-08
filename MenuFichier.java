@@ -9,7 +9,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 /**
- * crée et ajoute des éléments fonctionnels à la jmenubar
+ * crÃ©e et ajoute des Ã©lÃ©ments fonctionnels Ã  la jmenubar
  *
  * 
  * @author Daniel Colalillo
@@ -37,8 +37,8 @@ public class MenuFichier extends JMenuBar
 	{
 		/*
 		 * Strategie:
-		 * crée un nouveau menu et utilise des sous-fonctions 
-		 * pour ajouter des éléments à une jmenubar
+		 * crÃ©e un nouveau menu et utilise des sous-fonctions 
+		 * pour ajouter des Ã©lÃ©ments Ã  une jmenubar
 		 * 
 		 */
 		
@@ -53,7 +53,7 @@ public class MenuFichier extends JMenuBar
 		add(menu);
 		
 		
-		//éléments de menu
+		//Ã©lÃ©ments de menu
 		ajouteItem(choixMenu[0]);
 		
 		ajouteItem(choixMenu[1]);
@@ -65,7 +65,7 @@ public class MenuFichier extends JMenuBar
 	
 	
 	/**
-	 * ajoute un article à la jmenubar
+	 * ajoute un article Ã  la jmenubar
 	 * 
 	 * @param String item
 	 * 
@@ -77,17 +77,17 @@ public class MenuFichier extends JMenuBar
 		
 		/*
 		 * Strategie:
-		 * crée un nouvel élément jmenu et y ajoute un écouteur d'actions
+		 * crÃ©e un nouvel Ã©lÃ©ment jmenu et y ajoute un Ã©couteur d'actions
 		 * 
 		 */
 		
-		//crée un nouvel élément jmenu
+		//crÃ©e un nouvel Ã©lÃ©ment jmenu
 		menuItem = new JMenuItem(item);
 		
-		//ajoute un écouteur d'actions
+		//ajoute un Ã©couteur d'actions
 		menuItem.addActionListener(new MenuEcouteur());
 		
-		//ajoute l'article à la jmenubar
+		//ajoute l'article Ã  la jmenubar
 		menu.add(menuItem);
 		
 		
@@ -106,7 +106,7 @@ public class MenuFichier extends JMenuBar
 	{
 		
 		/**
-		 * événements d'action qui lancent le processus de lecture et de 
+		 * Ã©vÃ©nements d'action qui lancent le processus de lecture et de 
 		 * stockage d'un fichier texte ou d'un fichier binaire
 		 * 
 		 * 
@@ -118,22 +118,22 @@ public class MenuFichier extends JMenuBar
 		{
 			/*
 			 * Strategie:
-			 * en utilisant des fonctions précédemment créées qui 
-			 * stockent des données de fichier texte dans une collection 
-			 * d'élection. utilise également les instructions if pour 
-			 * déterminer si l'utilisateur souhaite ouvrir un fichier txt, 
+			 * en utilisant des fonctions prÃ©cÃ©demment crÃ©Ã©es qui 
+			 * stockent des donnÃ©es de fichier texte dans une collection 
+			 * d'Ã©lection. utilise Ã©galement les instructions if pour 
+			 * dÃ©terminer si l'utilisateur souhaite ouvrir un fichier txt, 
 			 * un fichier binaire ou quitter le programme.
 			 * 
 			 */
 			
 			
-			//obtient quel article dans la jmenubar a été pressé
+			//obtient quel article dans la jmenubar a Ã©tÃ© pressÃ©
 			JMenuItem source = (JMenuItem)arg0.getSource();
 			
-			//instancie la collection électorale
+			//instancie la collection Ã©lectorale
 			Election election = new Election(Constantes.ANNEE_ELECTION);
 			
-			//si l'utilisateur a sélectionné l'option d'ouvrir un fichier 
+			//si l'utilisateur a sÃ©lectionnÃ© l'option d'ouvrir un fichier 
 			//texte ouvert et de stocker le fichier texte
 			if(source.getText().equals(choixMenu[0]))
 			{
@@ -145,7 +145,7 @@ public class MenuFichier extends JMenuBar
 				ModuleFichier.sauverFichierBinaire(election);
 			}
 			
-			//si l'utilisateur a sélectionné l'option d'ouvrir un fichier
+			//si l'utilisateur a sÃ©lectionnÃ© l'option d'ouvrir un fichier
 			//binaire et de stocker le fichier texte
 			else if(source.getText().equals(choixMenu[1]))
 			{
